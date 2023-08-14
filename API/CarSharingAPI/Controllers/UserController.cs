@@ -1,0 +1,98 @@
+﻿using AutoMapper;
+using BusinessLogic.Models.User;
+using BusinessLogic.Services;
+using CarSharingAPI.Requests;
+using CarSharingAPI.Responses;
+using Microsoft.AspNetCore.Mvc;
+
+namespace CarSharingAPI.Controllers;
+
+[Route("[controller]")]
+[ApiController]
+public class UserController : ControllerBase
+{
+    private readonly IUserService _userService;
+    private readonly IMapper _mapper;
+
+    public UserController(IUserService userService, IMapper mapper)
+    {
+        _userService = userService;
+        _mapper = mapper;
+    }
+
+    [HttpGet]
+    [Route("get-id")]
+    public async Task<IActionResult> Get(int id)
+    {
+        if (!await _userService.ExistsAsync(id))
+        {
+            return NotFound();
+        }
+
+        var userDto = await _userService.GetByIdAsync(id);
+        var response = _mapper.Map<UserResponse>(userDto);
+        return Ok(response);
+    }
+    
+    [HttpPost]
+    [Route("LogIn")]
+    public async Task<IActionResult> Login(LogInRequest entity)
+    {
+        var user = await _userService.GetByEmailAsync(entity.Email);
+        if (user == null)
+        {
+            return NotFound("No users with that Email address");
+        }
+
+        if (user.Password != entity.Password)
+        {
+            return BadRequest("Wrong Password");
+            
+        }
+
+        var response = _mapper.Map<UserResponse>(user);
+        return Ok(response);
+    }
+
+    [HttpPost]
+    [Route("Add")]
+    public async Task<IActionResult> Create(CreateUserRequest entity)
+    {
+        var dto = _mapper.Map<UserDto>(entity);
+        var responseDto = await _userService.AddAsync(dto);
+        var response = _mapper.Map<UserResponse>(responseDto);
+        return Ok(response);
+    }
+    
+    [HttpPut]
+    [Route("Update")]
+    public async Task<IActionResult> Edit(UserRequest entity)
+    {
+        
+        if (!await _userService.ExistsAsync(entity.Id))
+        {
+            return NotFound();
+        }
+
+        var userDto = _mapper.Map<UserDto>(entity);
+        var newUserDto = await _userService.UpdateAsync(userDto);
+        var response = _mapper.Map<UserResponse>(newUserDto);
+        return Ok(response);
+    }
+    
+    
+    [HttpDelete]
+    [Route("Delete")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        if (!await _userService.ExistsAsync(id))
+        {
+            return NotFound();
+        }
+
+        var responseDto = await _userService.DeleteAsync(id);
+        var response = _mapper.Map<UserDto>(responseDto);
+        return Ok(response);
+    }
+
+}

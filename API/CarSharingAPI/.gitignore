@@ -1,0 +1,4 @@
+# Built objects
+bin/
+obj/
+.vs/
