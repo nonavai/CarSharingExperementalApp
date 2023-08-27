@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PovA3Oy95ZWZKrBVLe554Wqqf3az1zjysoFf4ni2lO3NoJ/uLxBk2nPy5HivdEYIO++BeOc4za9tOn8xX2lnug==",
+  "dgSpecHash": "4D+WDMv6d/LLNGTTfNp7L1ka1jVU8c1Zu89dCRQQ7E26vhJpAk6LGpWbfAA8jHZrsEmsjrZ1gDtHB6AdK2LE3A==",
   "success": true,
-  "projectFilePath": "C:\\rider\\c#projects\\CarSharing_app\\API\\BusinessLogic\\BusinessLogic.csproj",
+  "projectFilePath": "C:\\rider\\c#projects\\CarSharingApp\\API\\BusinessLogic\\BusinessLogic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Anton\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Anton\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
