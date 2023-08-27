@@ -2,6 +2,7 @@
 using AutoMapper;
 using BusinessLogic.Models.Activity;
 using BusinessLogic.Models.Borrower;
+using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 using FluentValidation;
@@ -28,7 +29,7 @@ public class ActivityService : IActivityService
         var activeList = await _activityRepository.GetByIdAsync(id);
         if (activeList == null)
         {
-            throw new Exception("Borrower not found");
+            throw new NotFoundException("Borrower not found");
         }
         var activityDto = _mapper.Map<ActivityDto>( activeList);
         return activityDto;
@@ -59,7 +60,7 @@ public class ActivityService : IActivityService
         var existingActiveList = await _activityRepository.GetByIdAsync(entity.Id);
         if (existingActiveList == null)
         {
-            throw new Exception("ActiveList not found");
+            throw new NotFoundException("ActiveList not found");
         }
         var validationResult = _validator.Validate(entity);
         if (!validationResult.IsValid)
@@ -81,7 +82,7 @@ public class ActivityService : IActivityService
         var activity = await _activityRepository.GetByIdAsync(id);
         if (activity == null)
         {
-            throw new ArgumentException("ActiveList not found");
+            throw new NotFoundException("ActiveList not found");
         }
         
         var activityDto = _mapper.Map<ActivityDto>( await _activityRepository.DeleteAsync(id));
@@ -95,7 +96,12 @@ public class ActivityService : IActivityService
 
     public async Task<ActivityDto?> GetByCarIdAsync(int id)
     {
-        var activityDto = _mapper.Map<ActivityDto>( await _activityRepository.GetByCarIdAsync(id));
+        var activity = await _activityRepository.GetByCarIdAsync(id); 
+        if (activity == null)
+        {
+            throw new NotFoundException("ActiveList not found");
+        }
+        var activityDto = _mapper.Map<ActivityDto>(activity);
         return activityDto;
     }
 

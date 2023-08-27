@@ -16,14 +16,22 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
+        CreateMap<UserDto, User>();
         CreateMap<User, UserDto>();
+        CreateMap<Roles, RolesDto>();
+        CreateMap<RolesDto, Roles>();
         CreateMap<Car, CarDto>();
         CreateMap<Borrower, BorrowerDto>();
         CreateMap<Lender, LenderDto>();
         CreateMap<Activity, ActivityDto>();
         CreateMap<Deal, DealDto>();
         CreateMap<FeedBack, FeedBackDto>();
-        CreateMap<Roles, RolesDto>();
+        CreateMap<CarDto, Car>();
+        CreateMap<BorrowerDto, Borrower>();
+        CreateMap<LenderDto, Lender>();
+        CreateMap<ActivityDto, Activity>();
+        CreateMap<DealDto, Deal>();
+        CreateMap<FeedBackDto, FeedBack>();
         
         CreateMap<IEnumerable<User>, IEnumerable<UserDto>>();
         CreateMap<IEnumerable<Roles>, IEnumerable<RolesDto>>();

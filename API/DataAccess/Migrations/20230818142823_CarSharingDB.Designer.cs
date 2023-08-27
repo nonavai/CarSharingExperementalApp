@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(CarSharingContext))]
-    [Migration("20230814005335_CarSharingDB")]
+    [Migration("20230818142823_CarSharingDB")]
     partial class CarSharingDB
     {
         /// <inheritdoc />
@@ -278,7 +278,6 @@ namespace DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")

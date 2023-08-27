@@ -13,6 +13,9 @@ public class CarSharingContext : Microsoft.EntityFrameworkCore.DbContext
     public DbSet<Activity> Activity { get; set; }
     public DbSet<FeedBack> FeedBacks { get; set; }
     public DbSet<Roles> Roles { get; set; }
+    public DbSet<RefreshToken> RefreshTokens { get; set; }
+    
+
     public string DbPath = $"Server=(localdb)\\mssqllocaldb;Database=CarSharingDB;Trusted_Connection=True;";
 
     public CarSharingContext()

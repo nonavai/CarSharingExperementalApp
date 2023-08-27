@@ -1,0 +1,12 @@
+C:\rider\c#projects\CarSharingApp\API\CustomExceptionsLibrary\bin\Debug\net7.0\CustomExceptionsLibrary.deps.json
+C:\rider\c#projects\CarSharingApp\API\CustomExceptionsLibrary\bin\Debug\net7.0\CustomExceptionsLibrary.dll
+C:\rider\c#projects\CarSharingApp\API\CustomExceptionsLibrary\bin\Debug\net7.0\CustomExceptionsLibrary.pdb
+C:\rider\c#projects\CarSharingApp\API\CustomExceptionsLibrary\obj\Debug\net7.0\CustomExceptionsLibrary.csproj.AssemblyReference.cache
+C:\rider\c#projects\CarSharingApp\API\CustomExceptionsLibrary\obj\Debug\net7.0\CustomExceptionsLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\rider\c#projects\CarSharingApp\API\CustomExceptionsLibrary\obj\Debug\net7.0\CustomExceptionsLibrary.AssemblyInfoInputs.cache
+C:\rider\c#projects\CarSharingApp\API\CustomExceptionsLibrary\obj\Debug\net7.0\CustomExceptionsLibrary.AssemblyInfo.cs
+C:\rider\c#projects\CarSharingApp\API\CustomExceptionsLibrary\obj\Debug\net7.0\CustomExceptionsLibrary.csproj.CoreCompileInputs.cache
+C:\rider\c#projects\CarSharingApp\API\CustomExceptionsLibrary\obj\Debug\net7.0\CustomExceptionsLibrary.dll
+C:\rider\c#projects\CarSharingApp\API\CustomExceptionsLibrary\obj\Debug\net7.0\refint\CustomExceptionsLibrary.dll
+C:\rider\c#projects\CarSharingApp\API\CustomExceptionsLibrary\obj\Debug\net7.0\CustomExceptionsLibrary.pdb
+C:\rider\c#projects\CarSharingApp\API\CustomExceptionsLibrary\obj\Debug\net7.0\ref\CustomExceptionsLibrary.dll

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
-using BusinessLogic.Models;
 using BusinessLogic.Models.Car;
+using BusinessLogic.Validators;
+using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
+using FluentValidation;
 
 namespace BusinessLogic.Services.Implemetation;
 
@@ -10,11 +12,13 @@ public class CarService : ICarService
 {
     private readonly ICarRepository _carRepository;
     private readonly IMapper _mapper;
+    private readonly IValidator<CarDto> _validator;
 
-    public CarService(ICarRepository carRepository, IMapper mapper)
+    public CarService(ICarRepository carRepository, IMapper mapper, IValidator<CarDto> validator)
     {
         _carRepository = carRepository;
         _mapper = mapper;
+        _validator = validator;
     }
 
     public async Task<CarDto> GetByIdAsync(int id)
@@ -22,7 +26,7 @@ public class CarService : ICarService
         var car = await _carRepository.GetByIdAsync(id);
         if (car == null)
         {
-            throw new Exception("Car not found");
+            throw new NotFoundException("Car not found");
         }
         var carDto = _mapper.Map<CarDto>( car);
         return carDto;
@@ -36,6 +40,12 @@ public class CarService : ICarService
 
     public async Task<CarDto> AddAsync(CarDto entity)
     {
+        var validationResult = _validator.Validate(entity);
+        
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors.ToString());
+        }
         var car = _mapper.Map<Car>(entity);
         var carDto = _mapper.Map<CarDto>( await _carRepository.AddAsync(car));
         return carDto;
@@ -47,7 +57,13 @@ public class CarService : ICarService
         var existingCar = await _carRepository.GetByIdAsync(entity.Id);
         if (existingCar == null)
         {
-            throw new Exception("Car not found");
+            throw new NotFoundException("Car not found");
+        }
+        var validationResult = _validator.Validate(entity);
+        
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors.ToString());
         }
         existingCar.Color = entity.Color;
         existingCar.Price = entity.Price;
@@ -63,7 +79,7 @@ public class CarService : ICarService
         var car = await _carRepository.GetByIdAsync(id);
         if (car == null)
         {
-            throw new ArgumentException("Car not found");
+            throw new NotFoundException("Car not found");
         }
         
         var carDto = _mapper.Map<CarDto>( await _carRepository.DeleteAsync(id));

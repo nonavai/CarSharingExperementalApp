@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessLogic.Models.Deal;
+using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 
@@ -23,7 +24,7 @@ public class DealService : IDealService
         var deal = await _dealRepository.GetByIdAsync(id);
         if (deal == null)
         {
-            throw new Exception("Deal not found");
+            throw new NotFoundException("Deal not found");
         }
         var dealDto = _mapper.Map<DealDto>(deal);
         return dealDto;
@@ -35,7 +36,7 @@ public class DealService : IDealService
         var activity = await _activityService.GetByCarIdAsync(dealDto.CarId);
         if (activity == null)
         {
-            throw new Exception("Activity not found");
+            throw new NotFoundException("Deal not found");
         }
 
         activity.IsActive = false;

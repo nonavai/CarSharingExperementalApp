@@ -26,7 +26,7 @@ public class CarValidator : AbstractValidator<CarDto>
         RuleFor(car => car.VehicleBody)
             .NotEmpty()
             .MinimumLength(9).WithMessage("VehicleBody num must be longer than 9.")
-            .MaximumLength(17).WithMessage("VehicleBody cannot exceed 12 characters.");
+            .MaximumLength(17).WithMessage("VehicleBody cannot exceed 17 characters.");
 
         RuleFor(car => car.Price)
             .GreaterThan(0).WithMessage("Price must be greater than 0.");

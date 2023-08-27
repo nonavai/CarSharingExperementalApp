@@ -80,8 +80,8 @@ namespace DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Admin = table.Column<bool>(type: "bit", nullable: false),
-                    BorrowerId = table.Column<int>(type: "int", nullable: false),
-                    LenderId = table.Column<int>(type: "int", nullable: false)
+                    BorrowerId = table.Column<int>(type: "int", nullable: true),
+                    LenderId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -173,7 +173,7 @@ namespace DataAccess.Migrations
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RecordNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -251,14 +251,12 @@ namespace DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Roles_BorrowerId",
                 table: "Roles",
-                column: "BorrowerId",
-                unique: true);
+                column: "BorrowerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Roles_LenderId",
                 table: "Roles",
-                column: "LenderId",
-                unique: true);
+                column: "LenderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",

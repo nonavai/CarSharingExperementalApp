@@ -55,4 +55,17 @@ public class UserRepository : IUserRepository
     {
         return await db.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
+
+    
+    /*public async Task<string?> GetRefreshTokenAsync(int id)
+    {
+        var user = await GetByIdAsync(id);
+        if (user == null)
+        {
+            return null;
+        }
+        return user.Token;
+    }*/
+    
+    
 }

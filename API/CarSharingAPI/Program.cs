@@ -1,23 +1,52 @@
 
+using System.Text;
 using BusinessLogic.Mapping;
 using BusinessLogic.Models.Activity;
 using BusinessLogic.Models.Borrower;
 using BusinessLogic.Models.Car;
 using BusinessLogic.Models.Lender;
+using BusinessLogic.Models.Roles;
 using BusinessLogic.Models.User;
 using BusinessLogic.Services;
 using BusinessLogic.Services.Implemetation;
 using BusinessLogic.Validators;
 using CarSharingAPI.Mapping;
+using CarSharingAPI.Middleware;
 using DataAccess.DbContext;
 using FluentValidation.AspNetCore;
 using DataAccess.Repositories;
 using DataAccess.Repositories.Implementation;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
+
+builder.Services.AddAuthentication(x =>
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(x=> x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidIssuer = config["JwtSettings:Issuer"],
+        ValidAudience = config["JwtSettings:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtSettings:Key"]!)),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy();
+});
+/*builder.Services.AddAuthentication(x =>
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme);
+builder.Services.AddAuthentication(x =>
+    x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme);*/
+
 
 // Add services to the container.
 
@@ -29,11 +58,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<CarSharingContext>(options => options.UseSqlServer($"Server=(localdb)\\mssqllocaldb;Database=CarSharingDB;Trusted_Connection=True;"));
-
 ConfigureServices(builder.Services);
 
 var app = builder.Build();
 
+
+Configure(app);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -43,12 +73,18 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
 app.Run();
 
+void Configure(WebApplication app)
+{
+    app.UseMiddleware<LoggingMiddleware>();
+    app.UseMiddleware<ExceptionMiddleware>();
+}
 void ConfigureServices(IServiceCollection serviceCollection)
 {
     serviceCollection.AddTransient<ICarRepository, CarRepository>();

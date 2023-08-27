@@ -2,6 +2,7 @@
 using BusinessLogic.Models;
 using BusinessLogic.Models.Borrower;
 using BusinessLogic.Models.User;
+using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 using FluentValidation;
@@ -27,7 +28,7 @@ public class BorrowerService : IBorrowerService
         var borrower = await _borrowerRepository.GetByIdAsync(id);
         if (borrower == null)
         {
-            throw new Exception("Borrower not found");
+            throw new NotFoundException("Borrower not found");
         }
         var borrowerDto = _mapper.Map<BorrowerDto>( borrower);
         return borrowerDto;
@@ -59,7 +60,7 @@ public class BorrowerService : IBorrowerService
         var existingBorrower = await _borrowerRepository.GetByIdAsync(entity.Id);
         if (existingBorrower == null)
         {
-            throw new Exception("Car not found");
+            throw new NotFoundException("Car not found");
         }
         
         var validationResult = _validator.Validate(entity);
@@ -87,7 +88,7 @@ public class BorrowerService : IBorrowerService
         var borrower = await _borrowerRepository.GetByIdAsync(id);
         if (borrower == null)
         {
-            throw new ArgumentException("Borrower not found");
+            throw new NotFoundException("Borrower not found");
         }
         
         var borrowerDto = _mapper.Map<BorrowerDto>(  await _borrowerRepository.DeleteAsync(id));

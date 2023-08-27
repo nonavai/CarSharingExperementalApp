@@ -13,4 +13,5 @@ public class UserDto
     public string PhoneNumber { get; set; }
     public string RecordNumber { get; set; }
     public string Description { get; set; }
+    //public string? Token { get; set; }
 }

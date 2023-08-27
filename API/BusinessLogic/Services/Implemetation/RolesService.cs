@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogic.Models.Car;
 using BusinessLogic.Models.Roles;
+using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 
@@ -22,7 +23,7 @@ public class RolesService : IRolesService
         var roles = await _rolesRepository.GetByIdAsync(id);
         if (roles == null)
         {
-            throw new Exception("Roles not found");
+            throw new NotFoundException("Roles not found");
         }
         var rolesDto = _mapper.Map<RolesDto>( roles);
         return rolesDto;
@@ -47,7 +48,7 @@ public class RolesService : IRolesService
         var existingRoles = await _rolesRepository.GetByIdAsync(entity.Id);
         if (existingRoles == null)
         {
-            throw new Exception("Roles not found");
+            throw new NotFoundException("Roles not found");
         }
         existingRoles.Admin = entity.Admin;
         existingRoles.BorrowerId = entity.BorrowerId;
@@ -63,7 +64,7 @@ public class RolesService : IRolesService
         var roles = await _rolesRepository.GetByIdAsync(id);
         if (roles == null)
         {
-            throw new ArgumentException("Roles not found");
+            throw new NotFoundException("Roles not found");
         }
         
         var rolesDto = _mapper.Map<RolesDto>( await _rolesRepository.DeleteAsync(id));

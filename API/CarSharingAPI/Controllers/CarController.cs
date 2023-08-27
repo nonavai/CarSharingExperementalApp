@@ -1,7 +1,6 @@
-﻿using System.Threading.Tasks;
-using AutoMapper;
-using BusinessLogic.Models;
+﻿using AutoMapper;
 using BusinessLogic.Models.Car;
+using BusinessLogic.Services;
 using BusinessLogic.Services.Implemetation;
 using CarSharingAPI.Requests;
 using CarSharingAPI.Responses;
@@ -14,7 +13,7 @@ namespace CarSharingAPI.Controllers;
 public class CarController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly CarService _carService;
+    private readonly ICarService _carService;
 
 
     public CarController(CarService carService, IMapper mapper)

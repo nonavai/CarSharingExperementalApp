@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogic.Models.Roles;
 using BusinessLogic.Models.User;
+using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 using FluentValidation;
@@ -42,19 +43,25 @@ public class UserService : IUserService
 
     public async Task<UserDto> AddAsync(UserDto entity)
     {
+        var userByEmail = await GetByEmailAsync(entity.Email);
+        if (userByEmail != null)
+        {
+            throw new BadAuthorizeException("User already exist");
+        }
         var validationResult = _validator.Validate(entity);
 
         if (!validationResult.IsValid)
         {
             throw new ValidationException(validationResult.Errors.ToString());
         }
-
+        
         // CREATING USER ROLES
         var roles = new RolesDto() { Admin = false, BorrowerId= null, LenderId = null};
-        /*var roleid =*/await _rolesService.AddAsync(roles);
-        User user = _mapper.Map<User>(entity);                                     //if doesn't work uncomment!! 
-        //user.RoleId = roleid.Id;
-        var userDto = _mapper.Map<UserDto>(  await _userRepository.AddAsync(user));
+        var roleDto =await _rolesService.AddAsync(roles);
+        User user = _mapper.Map<User>(entity);                                   
+        user.RoleId = roleDto.Id;
+        var compitedUser = await _userRepository.AddAsync(user);
+        var userDto = _mapper.Map<UserDto>(  compitedUser);
         return userDto;
     }
 
@@ -109,8 +116,28 @@ public class UserService : IUserService
         return userDto;
     }
 
-    
+    /*public async Task RemoveRefreshTokenAsync(int id)
+    {
+        var existingUserDto = await GetByIdAsync(id);
+        var existingUser = _mapper.Map<User>(existingUserDto);
+        
+        existingUser.Token = null;
+        await _userRepository.UpdateAsync(existingUser);
+    }
 
+    public async Task<string?> GetRefreshTokenAsync(int id)
+    {
+        var token = await _userRepository.GetRefreshTokenAsync(id);
+        return token;
+    }
 
-    // valoidate method 
+    public async Task<string> SaveRefreshToken(int id, string refreshToken)
+    {
+        var existingUserDto = await GetByIdAsync(id);
+        var existingUser = _mapper.Map<User>(existingUserDto);
+        
+        existingUser.Token = refreshToken;
+        await _userRepository.UpdateAsync(existingUser);
+        return refreshToken;
+    }*/
 }

@@ -1,5 +1,7 @@
-﻿using BusinessLogic.Models.Lender;
+﻿using AutoMapper;
+using BusinessLogic.Models.Lender;
 using BusinessLogic.Services;
+using CarSharingAPI.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarSharingAPI.Controllers;
@@ -9,17 +11,25 @@ namespace CarSharingAPI.Controllers;
 public class LenderController : ControllerBase
 {
     private readonly ILenderService _lenderService;
+    private readonly IMapper _mapper;
 
-    public LenderController(ILenderService lenderService)
+    public LenderController(ILenderService lenderService, IMapper mapper)
     {
         _lenderService = lenderService;
+        _mapper = mapper;
     }
 
     [HttpPost]
     [Route("Add")]
-    public async Task<IActionResult> Create(LenderDto entity)
+    public async Task<IActionResult> Create(LenderRequest entity)
     {
-        await _lenderService.AddAsync(entity);
-        return Ok();
+        var lender = _mapper.Map<LenderDto>(entity);
+        var lenderDto = await _lenderService.AddAsync(lender);
+        return Ok(lenderDto);
     }
+
+    /*public async Task<IActionResult> Update()
+    {
+        
+    }*/
 }

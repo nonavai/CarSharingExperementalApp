@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogic.Models;
 using BusinessLogic.Models.Lender;
+using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 
@@ -22,7 +23,7 @@ public class LenderService : ILenderService
         var lender = await _lenderRepository.GetByIdAsync(id);
         if (lender == null)
         {
-            throw new Exception("Lender not found");
+            throw new NotFoundException("Lender not found");
         }
         var lenderDto = _mapper.Map<LenderDto>( lender);
         return lenderDto;
@@ -56,7 +57,7 @@ public class LenderService : ILenderService
         var lender = await _lenderRepository.GetByIdAsync(id);
         if (lender == null)
         {
-            throw new ArgumentException("Lender not found");
+            throw new NotFoundException("Lender not found");
         }
         
         var lenderDto = _mapper.Map<LenderDto>( await _lenderRepository.DeleteAsync(id));
