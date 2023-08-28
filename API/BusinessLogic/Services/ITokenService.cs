@@ -7,5 +7,5 @@ namespace BusinessLogic.Services;
 public interface ITokenService
 {
     Task<RefreshTokenDto> GenerateRefreshToken(UserDto userId);
-    string GenerateAccessToken(RefreshTokenDto refreshTokenDto);
+    Task<string> GenerateAccessToken(RefreshTokenDto refreshTokenDto);
 }

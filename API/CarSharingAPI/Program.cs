@@ -12,6 +12,7 @@ using BusinessLogic.Services.Implemetation;
 using BusinessLogic.Validators;
 using CarSharingAPI.Mapping;
 using CarSharingAPI.Middleware;
+using CarSharingAPI.Swagger;
 using DataAccess.DbContext;
 using FluentValidation.AspNetCore;
 using DataAccess.Repositories;
@@ -19,7 +20,9 @@ using DataAccess.Repositories.Implementation;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,6 +59,7 @@ builder.Services.AddControllers().AddFluentValidation();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
 builder.Services.AddDbContext<CarSharingContext>(options => options.UseSqlServer($"Server=(localdb)\\mssqllocaldb;Database=CarSharingDB;Trusted_Connection=True;"));
 ConfigureServices(builder.Services);

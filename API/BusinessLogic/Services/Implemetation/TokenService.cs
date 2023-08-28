@@ -14,25 +14,27 @@ namespace BusinessLogic.Services.Implemetation;
 
 public class TokenService : ITokenService
 {
-    private readonly IRefreshTokenRepository _tokenRepository;
+    private readonly IRolesService _rolesService;
+    private readonly ITokenService _tokenService;
     private readonly IConfiguration _configuration;
     private readonly IMapper _mapper;
     
 
-    public TokenService(IRefreshTokenRepository tokenRepository, IMapper mapper, IConfiguration configuration)
+    public TokenService(ITokenService tokenService, IMapper mapper, IConfiguration configuration, IRolesService rolesService)
     {
-        _tokenRepository = tokenRepository;
+        _tokenService = tokenService;
         _mapper = mapper;
         _configuration = configuration;
+        _rolesService = rolesService;
     }
     public async Task<RefreshTokenDto> GenerateRefreshToken(UserDto user)
     {
         var claims = new List<Claim>
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.Acr, user.RoleId.ToString()),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString())
+            new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+            
         };
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -51,11 +53,7 @@ public class TokenService : ITokenService
             ExpiresAt = token.ValidTo
         };
     }
-
-    public string GenerateAccessToken(RefreshTokenDto refreshTokenDto)
-    {
-        throw new NotImplementedException();
-    }
+    
 
     /*public async Task<AccessToken> GenerateAccessToken(RefreshTokenDto refreshTokenDto)
     {
@@ -84,11 +82,12 @@ public class TokenService : ITokenService
             ExpiresAt = token.ValidTo,
         };
     }*/
-    public string UpdateAccessToken(RefreshTokenDto refreshToken)
+    public async Task<string> GenerateAccessToken(RefreshTokenDto refreshToken)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        
         var validationParameters = new TokenValidationParameters
         {
             IssuerSigningKey = key,
@@ -108,10 +107,10 @@ public class TokenService : ITokenService
         var claims = new List<Claim>
         {
             new Claim(JwtRegisteredClaimNames.Sub, refreshToken.UserId.ToString()),
-            new Claim(JwtRegisteredClaimNames.Acr, refreshToken.UserRoleId.ToString()),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString(CultureInfo.InvariantCulture)),
+            new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString())
         };
+        await AddClaimRoles(refreshToken.UserRoleId, claims);
         
         var token = new JwtSecurityToken(
             issuer: _configuration["Jwt:Issuer"],
@@ -120,6 +119,14 @@ public class TokenService : ITokenService
             expires: DateTime.UtcNow.AddMinutes(10),
             signingCredentials: creds);
         return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
+    private async Task AddClaimRoles(int roleId, List<Claim> claims)
+    {
+        var roles = await _rolesService.GetByIdAsync(roleId);
+        if (roles.Admin) claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+        if (roles.BorrowerId.HasValue) claims.Add(new Claim(ClaimTypes.Role, "Borrower"));
+        if (roles.LenderId.HasValue) claims.Add(new Claim(ClaimTypes.Role, "Lender"));
     }
     
 }
