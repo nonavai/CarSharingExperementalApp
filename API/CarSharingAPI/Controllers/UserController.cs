@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogic.Models.User;
 using BusinessLogic.Services;
+using CarSharingAPI.Identity;
 using CarSharingAPI.Requests;
 using CarSharingAPI.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +14,13 @@ public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
+    private readonly ITokenService _tokenService;
 
-    public UserController(IUserService userService, IMapper mapper)
+    public UserController(IUserService userService, IMapper mapper, ITokenService tokenService)
     {
         _userService = userService;
         _mapper = mapper;
+        _tokenService = tokenService;
     }
 
     [HttpGet]
@@ -50,7 +53,10 @@ public class UserController : ControllerBase
             
         }
 
-        var response = _mapper.Map<UserResponse>(user);
+        var response = _mapper.Map<LogInResponse>(user);
+        var refreshToken = await _tokenService.GetByUserId(response.Id) ?? await _tokenService.GenerateRefreshToken(user);
+        var accessToken = await _tokenService.GenerateAccessToken(refreshToken);
+        response.Token = accessToken;
         return Ok(response);
     }
 
@@ -80,7 +86,7 @@ public class UserController : ControllerBase
         return Ok(response);
     }
     
-    
+    [ValidateToken]
     [HttpDelete]
     [Route("Delete")]
     public async Task<IActionResult> Delete(int id)

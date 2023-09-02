@@ -41,10 +41,10 @@ builder.Services.AddAuthentication(x =>
         ValidateIssuerSigningKey = true
     });
 
-builder.Services.AddAuthorization(options =>
+/*builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy();
-});
+});*/
 /*builder.Services.AddAuthentication(x =>
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme);
 builder.Services.AddAuthentication(x =>

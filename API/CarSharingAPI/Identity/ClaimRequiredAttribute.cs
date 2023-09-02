@@ -1,8 +1,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using BusinessLogic.Services;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CarSharingAPI.Identity;
 
@@ -22,8 +24,14 @@ public class ClaimRequiredAttribute : Attribute, IAuthorizationFilter
         {
             context.Result = new UnauthorizedResult();
         }
-
-        var rolesSercice = context.HttpContext.RequestServices.GetService<IRolesService>();
+        
+        var tokenHandler = new JwtSecurityTokenHandler();
+        //var jwtToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
+        //var requestId = context.HttpContext.
+        //var rolesSercice = context.HttpContext.RequestServices.GetService<IRolesService>();
+        //var simplePrinciple = Jwtse.GetPrincipal(token);
+        //var auth = await context.HttpContext.Request.Headers.Authorization.
         //var roles = await rolesSercice.GetByIdAsync();
     }
+    
 }

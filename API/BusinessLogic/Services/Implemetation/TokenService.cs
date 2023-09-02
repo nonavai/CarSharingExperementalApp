@@ -1,4 +1,3 @@
-using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -15,24 +14,24 @@ namespace BusinessLogic.Services.Implemetation;
 public class TokenService : ITokenService
 {
     private readonly IRolesService _rolesService;
-    private readonly ITokenService _tokenService;
+    private readonly IRefreshTokenRepository _refreshTokenRepository;
     private readonly IConfiguration _configuration;
     private readonly IMapper _mapper;
     
 
-    public TokenService(ITokenService tokenService, IMapper mapper, IConfiguration configuration, IRolesService rolesService)
+    public TokenService( IMapper mapper, IConfiguration configuration, IRolesService rolesService, IRefreshTokenRepository refreshTokenRepository)
     {
-        _tokenService = tokenService;
         _mapper = mapper;
         _configuration = configuration;
         _rolesService = rolesService;
+        _refreshTokenRepository = refreshTokenRepository;
     }
     public async Task<RefreshTokenDto> GenerateRefreshToken(UserDto user)
     {
         var claims = new List<Claim>
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Jti, user.Id.ToString()),
+            new Claim(JwtRegisteredClaimNames.Sub, Guid.NewGuid().ToString()),
             new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
             
         };
@@ -45,43 +44,18 @@ public class TokenService : ITokenService
             expires: DateTime.UtcNow.AddDays(7),
             signingCredentials: creds);
         
-        return new RefreshTokenDto
+        var refreshTokenDto = new RefreshTokenDto
         {
             Token = new JwtSecurityTokenHandler().WriteToken(token),
             UserId = user.Id,
             UserRoleId = user.RoleId,
             ExpiresAt = token.ValidTo
         };
+        var refreshToken = _mapper.Map<RefreshToken>(refreshTokenDto);
+        var newRefreshToken = await _refreshTokenRepository.AddAsync(refreshToken);
+        refreshTokenDto.Id = newRefreshToken.Id;
+        return refreshTokenDto;
     }
-    
-
-    /*public async Task<AccessToken> GenerateAccessToken(RefreshTokenDto refreshTokenDto)
-    {
-        var claims = new List<Claim>
-        {
-            new Claim(JwtRegisteredClaimNames.Sub, refreshTokenDto.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.Acr, refreshTokenDto.UserRoleId.ToString()),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-        };
-
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-        var token = new JwtSecurityToken(
-            issuer: _configuration["Jwt:Issuer"],
-            audience: _configuration["Jwt:Audience"],
-            claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(15),
-            signingCredentials: creds
-        );
-
-        return new AccessToken
-        {
-            Token = new JwtSecurityTokenHandler().WriteToken(token),
-            ExpiresAt = token.ValidTo,
-        };
-    }*/
     public async Task<string> GenerateAccessToken(RefreshTokenDto refreshToken)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
@@ -106,8 +80,8 @@ public class TokenService : ITokenService
         }
         var claims = new List<Claim>
         {
-            new Claim(JwtRegisteredClaimNames.Sub, refreshToken.UserId.ToString()),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Jti, refreshToken.UserId.ToString()),
+            new Claim(JwtRegisteredClaimNames.Sub, Guid.NewGuid().ToString()),
             new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString())
         };
         await AddClaimRoles(refreshToken.UserRoleId, claims);
@@ -120,6 +94,18 @@ public class TokenService : ITokenService
             signingCredentials: creds);
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
+
+    public async Task<RefreshTokenDto?> GetByUserId(int id)
+    {
+        var refreshToken = await _refreshTokenRepository.GetByUserId(id);
+        if (refreshToken == null)
+        {
+            return null;
+        }
+        var refreshTokenDto = _mapper.Map<RefreshTokenDto>(refreshToken);
+        return refreshTokenDto;
+    }
+
 
     private async Task AddClaimRoles(int roleId, List<Claim> claims)
     {

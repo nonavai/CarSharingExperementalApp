@@ -54,4 +54,10 @@ public class RefreshTokenRepository : IRefreshTokenRepository
     {
         return await db.Activity.AnyAsync(p => p.Id == id);
     }
+
+    public async Task<RefreshToken?> GetByUserId(int id)
+    {
+        return db.RefreshTokens.FirstOrDefault(f => f.UserId == id);
+    }
+    
 }

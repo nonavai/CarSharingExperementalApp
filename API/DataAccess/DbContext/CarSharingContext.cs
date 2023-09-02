@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DataAccess.DbContext;
 
 public class CarSharingContext : Microsoft.EntityFrameworkCore.DbContext
-{
+{//
     public DbSet<Car> Cars { get; set; }
     public DbSet<Deal> Deals { get; set; }
     public DbSet<User> Users { get; set; }

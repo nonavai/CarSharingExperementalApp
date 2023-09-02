@@ -8,4 +8,5 @@ public interface ITokenService
 {
     Task<RefreshTokenDto> GenerateRefreshToken(UserDto userId);
     Task<string> GenerateAccessToken(RefreshTokenDto refreshTokenDto);
+    Task<RefreshTokenDto?> GetByUserId(int id);
 }
