@@ -236,6 +236,32 @@ namespace DataAccess.Migrations
                     b.ToTable("Lenders");
                 });
 
+            modelBuilder.Entity("DataAccess.Entities.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserRoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RefreshTokens");
+                });
+
             modelBuilder.Entity("DataAccess.Entities.Roles", b =>
                 {
                     b.Property<int>("Id")
@@ -248,20 +274,13 @@ namespace DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int?>("BorrowerId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("LenderId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BorrowerId")
-                        .IsUnique();
-
-                    b.HasIndex("LenderId")
-                        .IsUnique();
+                    
 
                     b.ToTable("Roles");
                 });

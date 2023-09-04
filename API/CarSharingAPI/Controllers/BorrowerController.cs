@@ -3,6 +3,7 @@ using AutoMapper;
 using BusinessLogic.Models.Borrower;
 using BusinessLogic.Services;
 using CarSharingAPI.Responses;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace CarSharingAPI.Controllers;
@@ -43,6 +44,7 @@ public class BorrowerController : ControllerBase
         var response = _mapper.Map<IEnumerable<BorrowerResponse>>(carDtos);
         return Ok(response);
     }
+    [Authorize]
     [HttpPost]
     [Route("Add")]
     public async Task<IActionResult> Create(BorrowerDto entity)
@@ -52,6 +54,7 @@ public class BorrowerController : ControllerBase
         var response = _mapper.Map<BorrowerResponse>(responseDto);
         return Ok(response);
     }
+    [Authorize()]//borrower
     [HttpPut]
     [Route("Update")]
     public async Task<IActionResult> Edit(BorrowerDto entity)
@@ -65,6 +68,8 @@ public class BorrowerController : ControllerBase
         var response = _mapper.Map<BorrowerResponse>(newCarDto);
         return Ok(response);
     }
+    //same id
+    [Authorize()]//borrower
     [HttpDelete]
     [Route("Delete")]
     public async Task<IActionResult> Delete(int id)

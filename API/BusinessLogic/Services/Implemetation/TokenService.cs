@@ -35,11 +35,11 @@ public class TokenService : ITokenService
             new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
             
         };
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
         var token = new JwtSecurityToken(
-            issuer: _configuration["Jwt:Issuer"],
-            audience: _configuration["Jwt:Audience"],
+            issuer: _configuration["JwtSettings:Issuer"],
+            audience: _configuration["JwtSettings:Audience"],
             claims: claims,
             expires: DateTime.UtcNow.AddDays(7),
             signingCredentials: creds);
@@ -59,14 +59,14 @@ public class TokenService : ITokenService
     public async Task<string> GenerateAccessToken(RefreshTokenDto refreshToken)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
         
         var validationParameters = new TokenValidationParameters
         {
             IssuerSigningKey = key,
-            ValidAudience = _configuration["Jwt:Audience"],
-            ValidIssuer = _configuration["Jwt:Issuer"],
+            ValidAudience = _configuration["JwtSettings:Audience"],
+            ValidIssuer = _configuration["JwtSettings:Issuer"],
             ClockSkew = TimeSpan.Zero
         };
         SecurityToken validatedToken;

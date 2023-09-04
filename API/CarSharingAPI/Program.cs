@@ -67,7 +67,7 @@ ConfigureServices(builder.Services);
 var app = builder.Build();
 
 
-Configure(app);
+//Configure(app);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -114,6 +114,9 @@ void ConfigureServices(IServiceCollection serviceCollection)
     
     serviceCollection.AddTransient<IRolesRepository, RolesRepository>();
     serviceCollection.AddTransient<IRolesService, RolesService>();
+
+    serviceCollection.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
+    serviceCollection.AddTransient<ITokenService, TokenService>();
     
     serviceCollection.AddAutoMapper(typeof(MappingProfile));
     serviceCollection.AddAutoMapper(typeof(MappingProfileApi));

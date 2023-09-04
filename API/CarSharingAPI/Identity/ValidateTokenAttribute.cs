@@ -1,4 +1,5 @@
 using CarSharingAPI.Helper;
+using CustomExceptionsLibrary.Exceptions;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace CarSharingAPI.Identity;
@@ -17,7 +18,7 @@ public class ValidateTokenAttribute : ActionFilterAttribute
         if (userId != requestUserId)
         {
             // Throw an exception if the user ids do not match
-            throw new UnauthorizedAccessException("The user is not authorized to access this resource.");
+            throw new NotVerifiedException("The user is not authorized to access this resource.");
         }
     }
 }

@@ -4,6 +4,8 @@ using BusinessLogic.Services;
 using BusinessLogic.Services.Implemetation;
 using CarSharingAPI.Requests;
 using CarSharingAPI.Responses;
+using DataAccess.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarSharingAPI.Controllers;
@@ -63,6 +65,9 @@ public class CarController : ControllerBase
         var response = _mapper.Map<IEnumerable<CarResponse>>(carDtos);
         return Ok(response);
     }
+    
+    
+    [Authorize()]//lender
     [HttpPost]
     [Route("Add")]
     public async Task<IActionResult> Create(CreateCarRequest entity)
@@ -72,6 +77,9 @@ public class CarController : ControllerBase
         var response = _mapper.Map<CarResponse>(responseDto);
         return Ok(response);
     }
+    
+    // same id 
+    [Authorize()]//lender
     [HttpPut]
     [Route("Update")]
     public async Task<IActionResult> Edit(CarRequest entity)
@@ -98,6 +106,8 @@ public class CarController : ControllerBase
         await _carService.UpdateAsync(entity);
         return Ok();
     }*/
+    // same id 
+    [Authorize()]//lender
     [HttpDelete]
     [Route("Delete")]
     public async Task<IActionResult> Delete(int id)

@@ -28,7 +28,9 @@ public class MappingProfileApi : Profile
         CreateMap<DealRequest, DealDto>();
         CreateMap<LogInRequest, UserDto>();
         CreateMap<SearchCarRequest, CarFilterDto>();
+        CreateMap<UserDto, LogInResponse>();
         
+        CreateMap<UserDto, LogInResponse>();
         CreateMap<UserDto, UserResponse>();
         CreateMap<CarDto, CarResponse>();
         CreateMap<BorrowerDto, BorrowerResponse>();

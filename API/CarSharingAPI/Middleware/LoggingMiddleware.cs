@@ -17,6 +17,6 @@ public class LoggingMiddleware
 
         await _next(context);
 
-        _logger.LogInformation($"Response: {context.Response.StatusCode} ");
+        _logger.LogInformation($"Response: {context.Response.StatusCode} {context.Response}");
     }
 }

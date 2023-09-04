@@ -4,6 +4,7 @@ using BusinessLogic.Services;
 using CarSharingAPI.Identity;
 using CarSharingAPI.Requests;
 using CarSharingAPI.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarSharingAPI.Controllers;
@@ -70,6 +71,8 @@ public class UserController : ControllerBase
         return Ok(response);
     }
     
+    [ValidateToken]
+    [Authorize]
     [HttpPut]
     [Route("Update")]
     public async Task<IActionResult> Edit(UserRequest entity)
@@ -87,6 +90,7 @@ public class UserController : ControllerBase
     }
     
     [ValidateToken]
+    [Authorize]
     [HttpDelete]
     [Route("Delete")]
     public async Task<IActionResult> Delete(int id)

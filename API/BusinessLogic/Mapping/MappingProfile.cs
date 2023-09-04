@@ -6,6 +6,7 @@ using BusinessLogic.Models.Car;
 using BusinessLogic.Models.Deal;
 using BusinessLogic.Models.FeedBack;
 using BusinessLogic.Models.Lender;
+using BusinessLogic.Models.RefreshToken;
 using BusinessLogic.Models.Roles;
 using BusinessLogic.Models.User;
 using DataAccess.Entities;
@@ -32,6 +33,8 @@ public class MappingProfile : Profile
         CreateMap<ActivityDto, Activity>();
         CreateMap<DealDto, Deal>();
         CreateMap<FeedBackDto, FeedBack>();
+        CreateMap<RefreshToken, RefreshTokenDto>();
+        CreateMap<RefreshTokenDto, RefreshToken>();
         
         CreateMap<IEnumerable<User>, IEnumerable<UserDto>>();
         CreateMap<IEnumerable<Roles>, IEnumerable<RolesDto>>();
