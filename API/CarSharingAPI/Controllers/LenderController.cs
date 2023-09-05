@@ -28,8 +28,5 @@ public class LenderController : ControllerBase
         return Ok(lenderDto);
     }
 
-    /*public async Task<IActionResult> Update()
-    {
-        
-    }*/
+   
 }

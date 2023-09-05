@@ -73,11 +73,13 @@ public class CarSharingContext : Microsoft.EntityFrameworkCore.DbContext
             .HasOne(r => r.Lender)
             .WithOne(l => l.Roles)
             .HasForeignKey<Roles>(r => r.LenderId)
+            .IsRequired(false)
             .OnDelete(DeleteBehavior.Cascade);
         modelBuilder.Entity<Roles>()
             .HasOne(r => r.Borrower)
             .WithOne(b => b.Roles)
             .HasForeignKey<Roles>(r => r.BorrowerId)
+            .IsRequired(false)
             .OnDelete(DeleteBehavior.Cascade);
         modelBuilder.Entity<Car>()
             .HasMany(r => r.FeedBack)

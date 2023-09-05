@@ -8,7 +8,8 @@ public static class JwtHelper
     public static async Task<int> GetUserIdFromToken(string token)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var securityToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
+        var validToken = token.Split()[^1];
+        var securityToken = tokenHandler.ReadJwtToken(validToken);
         if (securityToken == null)
         {
             throw new NotVerifiedException("Invalid token");

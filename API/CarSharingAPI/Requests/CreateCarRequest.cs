@@ -4,7 +4,7 @@ namespace CarSharingAPI.Requests;
 
 public record CreateCarRequest
 {
-    public int LenderId { get; set; }
+    public int LenderId { get; set; } // lender id should be taken from the token
     public int Year { get; set; }
     public string RegistrationNumber { get; set; }
     public string Mark { get; set; }

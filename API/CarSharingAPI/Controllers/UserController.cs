@@ -71,7 +71,7 @@ public class UserController : ControllerBase
         return Ok(response);
     }
     
-    [ValidateToken]
+    [ValidateToken] //to make it work - comment that attribute
     [Authorize]
     [HttpPut]
     [Route("Update")]
@@ -89,7 +89,7 @@ public class UserController : ControllerBase
         return Ok(response);
     }
     
-    [ValidateToken]
+    [ValidateToken] //to make it work - comment that attribute
     [Authorize]
     [HttpDelete]
     [Route("Delete")]

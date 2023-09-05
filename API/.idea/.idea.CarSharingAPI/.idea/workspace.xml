@@ -14,36 +14,24 @@
   <component name="ChangeListManager">
     <list default="true" id="53df683d-9748-49e1-8a74-aa063f817b35" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CarSharingAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CarSharingAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Mapping/MappingProfile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/TokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/TokenService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/CustomExceptionsLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/CustomExceptionsLibrary.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/CustomExceptionsLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/CustomExceptionsLibrary.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/ref/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/ref/BusinessLogic.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/refint/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/refint/BusinessLogic.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/BorrowerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/BorrowerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/CarController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/LenderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/LenderController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/UserController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarSharingAPI/Helper/JwtHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Helper/JwtHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Identity/ClaimRequiredAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Identity/ClaimRequiredAttribute.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Mapping/MappingProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Middleware/LoggingMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Middleware/LoggingMiddleware.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomExceptionsLibrary/bin/Debug/net7.0/CustomExceptionsLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CustomExceptionsLibrary/bin/Debug/net7.0/CustomExceptionsLibrary.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomExceptionsLibrary/bin/Debug/net7.0/CustomExceptionsLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CustomExceptionsLibrary/bin/Debug/net7.0/CustomExceptionsLibrary.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomExceptionsLibrary/obj/Debug/net7.0/CustomExceptionsLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/CustomExceptionsLibrary/obj/Debug/net7.0/CustomExceptionsLibrary.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomExceptionsLibrary/obj/Debug/net7.0/CustomExceptionsLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/CustomExceptionsLibrary/obj/Debug/net7.0/CustomExceptionsLibrary.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/Migrations/20230818142823_CarSharingDB.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/Migrations/20230818142823_CarSharingDB.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/CreateCarRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/CreateCarRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/CarSharingContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/CarSharingContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Entities/Roles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Entities/Roles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Migrations/20230904064236_CarSharingDB.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Migrations/20230904064236_CarSharingDB.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/Migrations/CarSharingContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Migrations/CarSharingContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.pdb" afterDir="false" />
@@ -60,9 +48,13 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18ed087f18a54546a19b94e666ab800215d88/8a/1518f8d8/JwtRegisteredClaimNames.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4905fb04e9143a383cf15c59a6d1a9c1fcb98/9a/95a87ece/ReferenceReferenceBuilder`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/14e8d8f5e08f22b1d8552e71c61d2a59ca14fa4bba4c12a6b94e86fc846e8fd/JwtSecurityTokenHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/43e1aa5e3aebf618e7bc17d95f31d7f5a97dac2043b1c74ceea319e68af4c7/FormFeature.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9d7564e4d0e58f3393727b246ae48b17f8a9e3670fbe5af23fd52778348e3e8/HttpResponse.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ba42fa83f66411607f71ed975b8e32754845f82070f9872d3b77d0a9c25de28/ClaimsPrincipal.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ee456ec7f2e479b4eaa66183eaa0d1365ef16c4615282c4e7dccacdcc14dda/ArgumentNullException.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -270,102 +262,5 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs</url>
-          <line>15</line>
-          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Identity\ValidateTokenAttribute.cs" initialLine="14" containingFunctionPresentation="method 'OnActionExecuting'">
-            <startOffsets>
-              <option value="563" />
-            </startOffsets>
-            <endOffsets>
-              <option value="622" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CarSharingAPI/Helper/JwtHelper.cs</url>
-          <line>19</line>
-          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Helper\JwtHelper.cs" initialLine="19" containingFunctionPresentation="method 'GetUserIdFromToken'">
-            <startOffsets>
-              <option value="664" />
-            </startOffsets>
-            <endOffsets>
-              <option value="736" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CarSharingAPI/Helper/JwtHelper.cs</url>
-          <line>13</line>
-          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Helper\JwtHelper.cs" initialLine="13" containingFunctionPresentation="method 'GetUserIdFromToken'">
-            <startOffsets>
-              <option value="414" />
-            </startOffsets>
-            <endOffsets>
-              <option value="462" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/DataAccess/Repositories/Implementation/RolesRepository.cs</url>
-          <line>17</line>
-          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\DataAccess\Repositories\Implementation\RolesRepository.cs" initialLine="17" containingFunctionPresentation="method 'GetByIdAsync'">
-            <startOffsets>
-              <option value="378" />
-            </startOffsets>
-            <endOffsets>
-              <option value="414" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BusinessLogic/Services/Implemetation/RolesService.cs</url>
-          <line>23</line>
-          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\BusinessLogic\Services\Implemetation\RolesService.cs" initialLine="23" containingFunctionPresentation="method 'GetByIdAsync'">
-            <startOffsets>
-              <option value="658" />
-            </startOffsets>
-            <endOffsets>
-              <option value="676" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BusinessLogic/Services/Implemetation/RolesService.cs</url>
-          <line>22</line>
-          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\BusinessLogic\Services\Implemetation\RolesService.cs" initialLine="22" containingFunctionPresentation="method 'GetByIdAsync'">
-            <startOffsets>
-              <option value="597" />
-            </startOffsets>
-            <endOffsets>
-              <option value="649" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BusinessLogic/Services/Implemetation/RolesService.cs</url>
-          <line>25</line>
-          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\BusinessLogic\Services\Implemetation\RolesService.cs" initialLine="25" containingFunctionPresentation="method 'GetByIdAsync'">
-            <startOffsets>
-              <option value="699" />
-            </startOffsets>
-            <endOffsets>
-              <option value="746" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

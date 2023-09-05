@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(CarSharingContext))]
-    [Migration("20230904064236_CarSharingDB")]
+    [Migration("20230905074800_CarSharingDB")]
     partial class CarSharingDB
     {
         /// <inheritdoc />
@@ -284,6 +284,14 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BorrowerId")
+                        .IsUnique()
+                        .HasFilter("[BorrowerId] IS NOT NULL");
+
+                    b.HasIndex("LenderId")
+                        .IsUnique()
+                        .HasFilter("[LenderId] IS NOT NULL");
+
                     b.ToTable("Roles");
                 });
 
@@ -406,14 +414,12 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Entities.Borrower", "Borrower")
                         .WithOne("Roles")
                         .HasForeignKey("DataAccess.Entities.Roles", "BorrowerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("DataAccess.Entities.Lender", "Lender")
                         .WithOne("Roles")
                         .HasForeignKey("DataAccess.Entities.Roles", "LenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Borrower");
 

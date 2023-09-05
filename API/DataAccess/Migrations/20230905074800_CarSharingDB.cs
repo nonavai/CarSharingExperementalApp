@@ -267,12 +267,16 @@ namespace DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Roles_BorrowerId",
                 table: "Roles",
-                column: "BorrowerId");
+                column: "BorrowerId",
+                unique: true,
+                filter: "[BorrowerId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Roles_LenderId",
                 table: "Roles",
-                column: "LenderId");
+                column: "LenderId",
+                unique: true,
+                filter: "[LenderId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_RoleId",

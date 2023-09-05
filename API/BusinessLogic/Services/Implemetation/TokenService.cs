@@ -87,10 +87,10 @@ public class TokenService : ITokenService
         await AddClaimRoles(refreshToken.UserRoleId, claims);
         
         var token = new JwtSecurityToken(
-            issuer: _configuration["Jwt:Issuer"],
-            audience: _configuration["Jwt:Audience"],
+            issuer: _configuration["JwtSettings:Issuer"],
+            audience: _configuration["JwtSettings:Audience"],
             claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(10),
+            expires: DateTime.UtcNow.AddHours(10),
             signingCredentials: creds);
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
