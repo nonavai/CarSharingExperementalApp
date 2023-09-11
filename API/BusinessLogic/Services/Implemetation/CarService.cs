@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using BusinessLogic.Models.Car;
 using BusinessLogic.Validators;
-using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 using FluentValidation;
+using Shared.Exceptions;
 
 namespace BusinessLogic.Services.Implemetation;
 

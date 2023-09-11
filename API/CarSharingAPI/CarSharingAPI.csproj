@@ -22,10 +22,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
-      <ProjectReference Include="..\CustomExceptionsLibrary\CustomExceptionsLibrary.csproj" />
+      <ProjectReference Include="..\Shared\Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Helper" />
       <Folder Include="Validators" />
     </ItemGroup>
 

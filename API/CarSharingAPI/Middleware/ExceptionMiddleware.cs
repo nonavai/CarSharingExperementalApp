@@ -1,6 +1,6 @@
 using CarSharingAPI.Middleware.other;
-using CustomExceptionsLibrary.Exceptions;
 using FluentValidation;
+using Shared.Exceptions;
 
 namespace CarSharingAPI.Middleware;
 

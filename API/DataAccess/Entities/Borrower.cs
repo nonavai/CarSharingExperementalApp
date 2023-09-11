@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using DataAccess.Enums;
+using Shared.Enums;
 
 namespace DataAccess.Entities;
 
-public class Borrower
+public class Borrower : EntityBase
 {
     public int Id { get; set; }
     public DateTime Birth { get; set; }

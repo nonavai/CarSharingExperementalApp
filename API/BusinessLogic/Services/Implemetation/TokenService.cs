@@ -8,6 +8,7 @@ using DataAccess.Entities;
 using DataAccess.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Shared.Exceptions;
 
 namespace BusinessLogic.Services.Implemetation;
 
@@ -95,15 +96,35 @@ public class TokenService : ITokenService
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
-    public async Task<RefreshTokenDto?> GetByUserId(int id)
+    public async Task<RefreshTokenDto> GetByUserId(int id)
     {
         var refreshToken = await _refreshTokenRepository.GetByUserId(id);
         if (refreshToken == null)
         {
-            return null;
+            throw new NotVerifiedException("token not found");
         }
         var refreshTokenDto = _mapper.Map<RefreshTokenDto>(refreshToken);
         return refreshTokenDto;
+    }
+    
+    public async Task<int> GetUserIdFromToken(string token)
+    {
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var validToken = token.Split()[^1];
+        var securityToken = tokenHandler.ReadJwtToken(validToken);
+        if (securityToken == null)
+        {
+            throw new NotVerifiedException("Invalid token");
+        }
+        var claims = securityToken.Claims;
+        var userIdClaim = claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Jti);
+        if (userIdClaim == null)
+        {
+            throw new NotVerifiedException("Token does not contain a UserId claim");
+        }
+
+        var userId = Convert.ToInt32(userIdClaim.Value);
+        return userId;
     }
 
 

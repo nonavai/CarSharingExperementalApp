@@ -1,7 +1,7 @@
 ﻿
 namespace DataAccess.Entities;
 
-public class Roles
+public class Roles : EntityBase
 {
     public int Id { get; set; }
     public bool Admin { get; set; }

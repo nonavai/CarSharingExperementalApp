@@ -2,10 +2,10 @@
 using AutoMapper;
 using BusinessLogic.Models.Activity;
 using BusinessLogic.Models.Borrower;
-using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 using FluentValidation;
+using Shared.Exceptions;
 using ValidationException = FluentValidation.ValidationException;
 
 namespace BusinessLogic.Services.Implemetation;
@@ -14,9 +14,7 @@ public class ActivityService : IActivityService
 {
     private readonly IActivityRepository _activityRepository;
     private readonly IMapper _mapper;
-
     private readonly IValidator<ActivityDto> _validator;
-    // manipulations
     public ActivityService( IMapper mapper, IActivityRepository activityRepository, IValidator<ActivityDto> validator)
     {
         _mapper = mapper;
@@ -94,7 +92,7 @@ public class ActivityService : IActivityService
         return await _activityRepository.ExistsAsync(id);
     }
 
-    public async Task<ActivityDto?> GetByCarIdAsync(int id)
+    public async Task<ActivityDto> GetByCarIdAsync(int id)
     {
         var activity = await _activityRepository.GetByCarIdAsync(id); 
         if (activity == null)

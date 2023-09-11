@@ -1,6 +1,4 @@
-using System.Text.Json.Serialization;
-using CarSharingAPI.Helper;
-using CustomExceptionsLibrary.Exceptions;
+using BusinessLogic.Services;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace CarSharingAPI.Identity;
@@ -12,7 +10,8 @@ public class ValidateTokenAttribute : ActionFilterAttribute
         // Get the token value from the request
         var token = context.HttpContext.Request.Headers["Authorization"];
         // Get the user id from the token
-        var userId = await JwtHelper.GetUserIdFromToken(token);
+        var tokenService = context.HttpContext.RequestServices.GetService<ITokenService>();
+        var userId = await tokenService.GetUserIdFromToken(token);
         // Get the user id from the request
         using var reader = new StreamReader(context.HttpContext.Request.Body);
         reader.BaseStream.Seek(0, SeekOrigin.Begin); 

@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using DataAccess.Enums;
+using Shared.Enums;
 
 namespace DataAccess.Entities;
 
-public class Car
+public class Car : EntityBase
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }

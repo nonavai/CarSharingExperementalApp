@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using BusinessLogic.Models.Roles;
 using BusinessLogic.Models.User;
-using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 using FluentValidation;
+using Shared.Exceptions;
 
 
 namespace BusinessLogic.Services.Implemetation;
@@ -29,7 +29,7 @@ public class UserService : IUserService
         var user = await _userRepository.GetByIdAsync(id);
         if (user == null)
         {
-            throw new Exception("Car not found");
+            throw new NotFoundException("Car not found");
         }
         var userDto = _mapper.Map<UserDto>(user);
         return userDto;
@@ -70,7 +70,7 @@ public class UserService : IUserService
         var existingUser = await _userRepository.GetByIdAsync(entity.Id);
         if (existingUser == null)
         {
-            throw new Exception("User not found");
+            throw new NotFoundException("User not found");
         }
         //check on existing
         var validationResult = _validator.Validate(entity);
@@ -98,7 +98,7 @@ public class UserService : IUserService
         var user = await _userRepository.GetByIdAsync(id);
         if (user == null)
         {
-            throw new ArgumentException("User not found");
+            throw new NotFoundException("User not found");
         }
         
         var userDto = _mapper.Map<UserDto>( await _userRepository.DeleteAsync(id));
@@ -112,32 +112,9 @@ public class UserService : IUserService
 
     public async Task<UserDto?> GetByEmailAsync(string email)
     {
-        var userDto = _mapper.Map<UserDto>( await _userRepository.GetByEmailAsync(email));
+        var user = await _userRepository.GetByEmailAsync(email);
+        var userDto = _mapper.Map<UserDto?>(user);
         return userDto;
     }
-
-    /*public async Task RemoveRefreshTokenAsync(int id)
-    {
-        var existingUserDto = await GetByIdAsync(id);
-        var existingUser = _mapper.Map<User>(existingUserDto);
-        
-        existingUser.Token = null;
-        await _userRepository.UpdateAsync(existingUser);
-    }
-
-    public async Task<string?> GetRefreshTokenAsync(int id)
-    {
-        var token = await _userRepository.GetRefreshTokenAsync(id);
-        return token;
-    }
-
-    public async Task<string> SaveRefreshToken(int id, string refreshToken)
-    {
-        var existingUserDto = await GetByIdAsync(id);
-        var existingUser = _mapper.Map<User>(existingUserDto);
-        
-        existingUser.Token = refreshToken;
-        await _userRepository.UpdateAsync(existingUser);
-        return refreshToken;
-    }*/
+    
 }

@@ -1,56 +1,17 @@
 ﻿using DataAccess.DbContext;
 using DataAccess.Entities;
-using DataAccess.Enums;
+using Shared.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories.Implementation;
 
-public class CarRepository : ICarRepository
+public class CarRepository : GenericRepository<Car> , ICarRepository
 {
     private CarSharingContext db;
 
-    public CarRepository(CarSharingContext db)
+    public CarRepository(CarSharingContext db) : base(db)
     {
         this.db = db;
-    }
-
-    public async Task<Car?> GetByIdAsync(int id)
-    {
-        return await db.Cars.FindAsync(id);
-    }
-
-    public async Task<IEnumerable<Car>> GetAllAsync()
-    {
-        return db.Cars.AsEnumerable();
-    }
-
-    public async Task<Car> AddAsync(Car entity)
-    {
-        await db.Cars.AddAsync(entity);
-        await db.SaveChangesAsync();
-        return entity;
-    }
-
-    public async Task<Car> UpdateAsync(Car entity)
-    {
-        db.Entry(entity).State = EntityState.Modified; // проверить!
-        await db.SaveChangesAsync();
-        return entity;
-    }
-
-    public async Task<Car?> DeleteAsync(int id)
-    {
-        var entity = await GetByIdAsync(id);
-        if (entity == null) return null;
-        db.Cars.Remove(entity);
-        await db.SaveChangesAsync();
-        return entity;
-
-    }
-
-    public async Task<bool> ExistsAsync(int id)
-    {
-        return await db.Cars.AnyAsync(p => p.Id == id);
     }
 
     public async Task<IQueryable<Car>> GetMany(int[] ids)
@@ -90,4 +51,5 @@ public class CarRepository : ICarRepository
         
         return  await Task.FromResult(query);
     }
+    
 }

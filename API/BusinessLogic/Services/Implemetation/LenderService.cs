@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using BusinessLogic.Models;
 using BusinessLogic.Models.Lender;
-using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
+using Shared.Exceptions;
 
 namespace BusinessLogic.Services.Implemetation;
 
@@ -37,7 +37,7 @@ public class LenderService : ILenderService
 
     public async Task<LenderDto> AddAsync(LenderDto entity)
     {
-        if (false) //validation
+        if (false) //TODO: validation
         {
             throw new NotImplementedException();
         }

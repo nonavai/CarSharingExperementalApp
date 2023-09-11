@@ -1,6 +1,6 @@
 namespace DataAccess.Entities;
 
-public class FeedBack
+public class FeedBack : EntityBase
 {
     public int Id { get; set; }
     public int CarId { get; set; }

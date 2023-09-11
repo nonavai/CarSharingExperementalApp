@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using BusinessLogic.Models.Deal;
-using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
+using Shared.Exceptions;
 
 namespace BusinessLogic.Services.Implemetation;
 

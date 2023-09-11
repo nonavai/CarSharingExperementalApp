@@ -26,3 +26,6 @@ C:\rider\c#projects\CarSharingApp\API\DataAccess\obj\Debug\net7.0\refint\DataAcc
 C:\rider\c#projects\CarSharingApp\API\DataAccess\obj\Debug\net7.0\DataAccess.pdb
 C:\rider\c#projects\CarSharingApp\API\DataAccess\obj\Debug\net7.0\DataAccess.genruntimeconfig.cache
 C:\rider\c#projects\CarSharingApp\API\DataAccess\obj\Debug\net7.0\ref\DataAccess.dll
+C:\rider\c#projects\CarSharingApp\API\DataAccess\bin\Debug\net7.0\Shared.dll
+C:\rider\c#projects\CarSharingApp\API\DataAccess\bin\Debug\net7.0\Shared.pdb
+C:\rider\c#projects\CarSharingApp\API\DataAccess\obj\Debug\net7.0\DataAccess.csproj.CopyComplete

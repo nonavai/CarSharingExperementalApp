@@ -28,5 +28,5 @@ C:\rider\c#projects\CarSharingApp\API\BusinessLogic\obj\Debug\net7.0\BusinessLog
 C:\rider\c#projects\CarSharingApp\API\BusinessLogic\obj\Debug\net7.0\refint\BusinessLogic.dll
 C:\rider\c#projects\CarSharingApp\API\BusinessLogic\obj\Debug\net7.0\BusinessLogic.pdb
 C:\rider\c#projects\CarSharingApp\API\BusinessLogic\obj\Debug\net7.0\ref\BusinessLogic.dll
-C:\rider\c#projects\CarSharingApp\API\BusinessLogic\bin\Debug\net7.0\CustomExceptionsLibrary.dll
-C:\rider\c#projects\CarSharingApp\API\BusinessLogic\bin\Debug\net7.0\CustomExceptionsLibrary.pdb
+C:\rider\c#projects\CarSharingApp\API\BusinessLogic\bin\Debug\net7.0\Shared.dll
+C:\rider\c#projects\CarSharingApp\API\BusinessLogic\bin\Debug\net7.0\Shared.pdb

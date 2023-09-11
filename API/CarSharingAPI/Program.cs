@@ -4,15 +4,13 @@ using BusinessLogic.Mapping;
 using BusinessLogic.Models.Activity;
 using BusinessLogic.Models.Borrower;
 using BusinessLogic.Models.Car;
-using BusinessLogic.Models.Lender;
-using BusinessLogic.Models.Roles;
 using BusinessLogic.Models.User;
 using BusinessLogic.Services;
 using BusinessLogic.Services.Implemetation;
 using BusinessLogic.Validators;
+using CarSharingAPI.Extensions;
 using CarSharingAPI.Mapping;
 using CarSharingAPI.Middleware;
-using CarSharingAPI.Swagger;
 using DataAccess.DbContext;
 using FluentValidation.AspNetCore;
 using DataAccess.Repositories;
@@ -23,6 +21,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.Extensions.Configuration;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -59,9 +58,9 @@ builder.Services.AddControllers().AddFluentValidation();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
-
-builder.Services.AddDbContext<CarSharingContext>(options => options.UseSqlServer($"Server=(localdb)\\mssqllocaldb;Database=CarSharingDB;Trusted_Connection=True;"));
+builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, SwaggerConfigurationExtension>();
+var connectionString = builder.Configuration.GetConnectionString("CarSharingDb");
+builder.Services.AddDbContext<CarSharingContext>(options => options.UseSqlServer(connectionString));
 ConfigureServices(builder.Services);
 
 var app = builder.Build();

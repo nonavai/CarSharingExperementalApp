@@ -1,6 +1,4 @@
-﻿using DataAccess.Enums;
-
-namespace BusinessLogic.Models.User;
+﻿namespace BusinessLogic.Models.User;
 
 public class UserDto
 {

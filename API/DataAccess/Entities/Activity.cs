@@ -3,7 +3,7 @@
 
 namespace DataAccess.Entities;
 
-public class Activity
+public class Activity : EntityBase
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }

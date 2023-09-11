@@ -2,10 +2,10 @@
 using BusinessLogic.Models;
 using BusinessLogic.Models.Borrower;
 using BusinessLogic.Models.User;
-using CustomExceptionsLibrary.Exceptions;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 using FluentValidation;
+using Shared.Exceptions;
 
 namespace BusinessLogic.Services.Implemetation;
 

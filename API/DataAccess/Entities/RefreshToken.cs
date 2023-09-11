@@ -1,6 +1,6 @@
 namespace DataAccess.Entities;
 
-public class RefreshToken
+public class RefreshToken : EntityBase
 {
     public int Id { get; set; }
     public int UserId { get; set; }

@@ -43,11 +43,6 @@ public class UserController : ControllerBase
     public async Task<IActionResult> Login(LogInRequest entity)
     {
         var user = await _userService.GetByEmailAsync(entity.Email);
-        if (user == null)
-        {
-            return NotFound("No users with that Email address");
-        }
-
         if (user.Password != entity.Password)
         {
             return BadRequest("Wrong Password");
@@ -55,9 +50,11 @@ public class UserController : ControllerBase
         }
 
         var response = _mapper.Map<LogInResponse>(user);
-        var refreshToken = await _tokenService.GetByUserId(response.Id) ?? await _tokenService.GenerateRefreshToken(user);
-        var accessToken = await _tokenService.GenerateAccessToken(refreshToken);
-        response.Token = accessToken;
+        var refreshToken = await _tokenService.GetByUserId(response.Id);
+        var newRefreshToken = await _tokenService.GenerateRefreshToken(user);
+        var accessToken = await _tokenService.GenerateAccessToken(newRefreshToken);
+        response.RefreshToken = newRefreshToken.Token;
+        response.accessToken = accessToken;
         return Ok(response);
     }
 

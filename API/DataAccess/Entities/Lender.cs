@@ -1,6 +1,6 @@
 ﻿namespace DataAccess.Entities;
 
-public class Lender
+public class Lender : EntityBase
 {
     public int Id { get; set; }
 

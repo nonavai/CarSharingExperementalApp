@@ -1,8 +1,8 @@
-﻿using DataAccess.Enums;
+﻿using Shared.Enums;
 
 namespace DataAccess.Entities;
 
-public class Deal
+public class Deal : EntityBase
 {
     public int Id { get; set; }
     public int LenderId { get; set; }

@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using DataAccess.Enums;
 
 namespace DataAccess.Entities;
 
-public class User
+public class User : EntityBase
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
