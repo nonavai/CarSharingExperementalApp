@@ -1,7 +1,6 @@
-using Microsoft.AspNetCore.Components;
 using Shared.Enums;
 
-namespace CarSharingAPI.Requests;
+namespace CarSharingAPI.Requests.Car;
 
 public record SearchCarRequest
 {

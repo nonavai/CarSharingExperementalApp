@@ -6,7 +6,8 @@ namespace BusinessLogic.Services;
 
 public interface IUserService : IBaseService<UserDto>
 {
-    Task<UserDto?> GetByEmailAsync(string email);
+    Task<UserDto> GetByEmailAsync(string email);
+    Task<bool> IsEmailExist(string email);
 
     //Task<UserDto> UpdateSome(UserUpdateDto entity);
 

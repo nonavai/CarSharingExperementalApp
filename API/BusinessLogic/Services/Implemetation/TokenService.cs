@@ -27,7 +27,7 @@ public class TokenService : ITokenService
         _rolesService = rolesService;
         _refreshTokenRepository = refreshTokenRepository;
     }
-    public async Task<RefreshTokenDto> GenerateRefreshToken(UserDto user)
+    public async Task<RefreshTokenDto> GenerateRefreshToken(UserDto user) //TODO: delete old token on creating
     {
         var claims = new List<Claim>
         {

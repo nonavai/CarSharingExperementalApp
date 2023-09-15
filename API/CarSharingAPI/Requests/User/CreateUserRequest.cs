@@ -1,4 +1,4 @@
-namespace CarSharingAPI.Requests;
+namespace CarSharingAPI.Requests.User;
 
 public record CreateUserRequest
 {

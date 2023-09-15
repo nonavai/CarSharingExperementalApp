@@ -3,6 +3,7 @@ using BusinessLogic.Models.Car;
 using BusinessLogic.Services;
 using BusinessLogic.Services.Implemetation;
 using CarSharingAPI.Requests;
+using CarSharingAPI.Requests.Car;
 using CarSharingAPI.Responses;
 using DataAccess.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -82,30 +83,20 @@ public class CarController : ControllerBase
     [Authorize()]//lender
     [HttpPut]
     [Route("Update")]
-    public async Task<IActionResult> Edit(CarRequest entity)
-    {
-        if (!await _carService.ExistsAsync(entity.Id))
-        {
-            return NotFound();
-        }
-        var carDto = _mapper.Map<CarDto>(entity);
-        var newCarDto = await _carService.UpdateAsync(carDto);
-        var response = _mapper.Map<CarResponse>(newCarDto);
-        return Ok(response);
-        
-    }
-    /*[HttpPatch]
-    [Route("Update")]
-    public async Task<IActionResult> EditPartly(CreateCarRequest entity)
+    public async Task<IActionResult> Edit(int id, [FromBody] CarRequest entity)
     {
         if (!await _carService.ExistsAsync(id))
         {
             return NotFound();
         }
-
-        await _carService.UpdateAsync(entity);
-        return Ok();
-    }*/
+        var carDto = _mapper.Map<CarDto>(entity);
+        carDto.Id = id;
+        var newCarDto = await _carService.UpdateAsync(carDto);
+        var response = _mapper.Map<CarResponse>(newCarDto);
+        return Ok(response);
+        
+    }
+    
     // same id 
     [Authorize()]//lender
     [HttpDelete]

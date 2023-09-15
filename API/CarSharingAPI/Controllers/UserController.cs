@@ -3,6 +3,7 @@ using BusinessLogic.Models.User;
 using BusinessLogic.Services;
 using CarSharingAPI.Identity;
 using CarSharingAPI.Requests;
+using CarSharingAPI.Requests.User;
 using CarSharingAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -43,14 +44,13 @@ public class UserController : ControllerBase
     public async Task<IActionResult> Login(LogInRequest entity)
     {
         var user = await _userService.GetByEmailAsync(entity.Email);
+        
         if (user.Password != entity.Password)
         {
             return BadRequest("Wrong Password");
-            
         }
 
         var response = _mapper.Map<LogInResponse>(user);
-        var refreshToken = await _tokenService.GetByUserId(response.Id);
         var newRefreshToken = await _tokenService.GenerateRefreshToken(user);
         var accessToken = await _tokenService.GenerateAccessToken(newRefreshToken);
         response.RefreshToken = newRefreshToken.Token;
@@ -68,19 +68,20 @@ public class UserController : ControllerBase
         return Ok(response);
     }
     
-    [ValidateToken] //to make it work - comment that attribute
+    //[ValidateToken] //to make it work - comment that attribute
     [Authorize]
     [HttpPut]
     [Route("Update")]
-    public async Task<IActionResult> Edit(UserRequest entity)
+    public async Task<IActionResult> Edit(int id, [FromBody] UserRequest entity)
     {
         
-        if (!await _userService.ExistsAsync(entity.Id))
+        if (!await _userService.ExistsAsync(id))
         {
             return NotFound();
         }
 
         var userDto = _mapper.Map<UserDto>(entity);
+        userDto.Id = id;
         var newUserDto = await _userService.UpdateAsync(userDto);
         var response = _mapper.Map<UserResponse>(newUserDto);
         return Ok(response);

@@ -1,11 +1,10 @@
-﻿using System;
-using Shared.Enums;
+﻿using Shared.Enums;
 
-namespace CarSharingAPI.Requests;
+namespace CarSharingAPI.Requests.Borrower;
 
 public record BorrowerRequest
 {
-    public int Id { get; set; }
+    
     public DateTime Birth { get; set; }
     public string Country { get; set; }
     public string FirstName { get; set; }

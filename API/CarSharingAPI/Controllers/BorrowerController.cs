@@ -2,6 +2,8 @@
 using AutoMapper;
 using BusinessLogic.Models.Borrower;
 using BusinessLogic.Services;
+using CarSharingAPI.Requests;
+using CarSharingAPI.Requests.Borrower;
 using CarSharingAPI.Responses;
 using Microsoft.AspNetCore.Authorization;
 
@@ -40,32 +42,33 @@ public class BorrowerController : ControllerBase
     [Route("get-all")]
     public async Task<IActionResult> GetAll()
     {
-        var carDtos = await _borrowerService.GetAllAsync();
-        var response = _mapper.Map<IEnumerable<BorrowerResponse>>(carDtos);
+        var request = await _borrowerService.GetAllAsync();
+        var response = _mapper.Map<IEnumerable<BorrowerResponse>>(request);
         return Ok(response);
     }
     [Authorize]
     [HttpPost]
     [Route("Add")]
-    public async Task<IActionResult> Create(BorrowerDto entity)
+    public async Task<IActionResult> Create(BorrowerRequest request)
     {
-        var request = _mapper.Map<BorrowerDto>(entity);
-        var responseDto = await _borrowerService.AddAsync(request);
+        var dto = _mapper.Map<BorrowerDto>(request);
+        var responseDto = await _borrowerService.AddAsync(dto);
         var response = _mapper.Map<BorrowerResponse>(responseDto);
         return Ok(response);
     }
     [Authorize()]//borrower
     [HttpPut]
     [Route("Update")]
-    public async Task<IActionResult> Edit(BorrowerDto entity)
+    public async Task<IActionResult> Edit(int id, [FromBody] BorrowerRequest request)
     {
-        if (!await _borrowerService.ExistsAsync(entity.Id))
+        if (!await _borrowerService.ExistsAsync(id))
         {
             return NotFound();
         }
-        var carDto = _mapper.Map<BorrowerDto>(entity);
-        var newCarDto = await _borrowerService.UpdateAsync(carDto);
-        var response = _mapper.Map<BorrowerResponse>(newCarDto);
+        var borrowerDto = _mapper.Map<BorrowerDto>(request);
+        borrowerDto.Id = id;
+        var newBorrowerDto = await _borrowerService.UpdateAsync(borrowerDto);
+        var response = _mapper.Map<BorrowerResponse>(newBorrowerDto);
         return Ok(response);
     }
     //same id

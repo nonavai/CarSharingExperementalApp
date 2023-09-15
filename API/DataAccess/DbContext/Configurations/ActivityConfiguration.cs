@@ -12,6 +12,6 @@ public class ActivityConfiguration : IEntityTypeConfiguration<Activity>
             .HasOne(a => a.Car)
             .WithOne(c => c.Activity)
             .HasForeignKey<Activity>(a => a.CarId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

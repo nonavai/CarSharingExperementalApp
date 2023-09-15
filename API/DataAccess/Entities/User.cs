@@ -16,11 +16,6 @@ public class User : EntityBase
     public string RecordNumber { get; set; }
     public string? Description { get; set; }
 
-    //public string? Token { get; set; }
-    
     public Roles Role { get; set; }
-
     public IEnumerable<FeedBack> FeedBacks { get; set; }
-    /*public Lender Lender { get; set; }
-    public Borrower Borrower { get; set; }*/
 }

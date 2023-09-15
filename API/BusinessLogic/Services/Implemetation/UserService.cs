@@ -43,8 +43,7 @@ public class UserService : IUserService
 
     public async Task<UserDto> AddAsync(UserDto entity)
     {
-        var userByEmail = await GetByEmailAsync(entity.Email);
-        if (userByEmail != null)
+        if (await IsEmailExist(entity.Email))
         {
             throw new BadAuthorizeException("User already exist");
         }
@@ -110,11 +109,17 @@ public class UserService : IUserService
         return await _userRepository.ExistsAsync(id);
     }
 
-    public async Task<UserDto?> GetByEmailAsync(string email)
+    public async Task<UserDto> GetByEmailAsync(string email)
     {
         var user = await _userRepository.GetByEmailAsync(email);
-        var userDto = _mapper.Map<UserDto?>(user);
+        var userDto = _mapper.Map<UserDto>(user);
         return userDto;
     }
-    
+
+    public async Task<bool> IsEmailExist(string email)
+    {
+        var user = await _userRepository.GetByEmailAsync(email);
+        return user != null;
+    }
+
 }

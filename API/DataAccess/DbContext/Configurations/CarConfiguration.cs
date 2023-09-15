@@ -12,17 +12,17 @@ public class CarConfiguration : IEntityTypeConfiguration<Car>
             .HasOne(p => p.Owner)
             .WithMany(c => c.Cars)
             .HasForeignKey(p => p.LenderId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
         modelBuilder
             .HasOne(c => c.Activity)
             .WithOne(a => a.Car)
             .HasForeignKey<Activity>(a => a.CarId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.NoAction);
         modelBuilder
             .HasMany(c => c.Deals)
             .WithOne(d => d.Car)
             .HasForeignKey(d => d.CarId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.NoAction);
         modelBuilder
             .HasMany(r => r.FeedBack)
             .WithOne(b => b.Car)

@@ -2,6 +2,7 @@
 using BusinessLogic.Models.Activity;
 using BusinessLogic.Services;
 using CarSharingAPI.Requests;
+using CarSharingAPI.Requests.Activity;
 using CarSharingAPI.Responses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -72,15 +73,16 @@ public class ActivityController : ControllerBase
     }
     [HttpPut]
     [Route("Update")]
-    public async Task<IActionResult> Edit(ActivityRequest entity)
+    public async Task<IActionResult> Edit(int id, [FromBody] ActivityRequest request)
     {
-        if (!await _activityService.ExistsAsync(entity.Id))
+        if (!await _activityService.ExistsAsync(id))
         {
             return NotFound();
         }
-        var carDto = _mapper.Map<ActivityDto>(entity);
-        var newCarDto = await _activityService.UpdateAsync(carDto);
-        var response = _mapper.Map<ActivityResponse>(newCarDto);
+        var activityDto = _mapper.Map<ActivityDto>(request);
+        activityDto.Id = id;
+        var newActivityDto = await _activityService.UpdateAsync(activityDto);
+        var response = _mapper.Map<ActivityResponse>(newActivityDto);
         return Ok(response);
     }
 }

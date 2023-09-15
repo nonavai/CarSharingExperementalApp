@@ -1,10 +1,9 @@
 using Shared.Enums;
 
-namespace CarSharingAPI.Requests;
+namespace CarSharingAPI.Requests.Car;
 
 public class CarRequest
 {
-    public int Id { get; set; }
     public int? Year { get; set; }
     public string? RegistrationNumber { get; set; }
     public string? Mark { get; set; }

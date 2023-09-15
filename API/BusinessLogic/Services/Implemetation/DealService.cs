@@ -2,6 +2,7 @@
 using BusinessLogic.Models.Deal;
 using DataAccess.Entities;
 using DataAccess.Repositories;
+using Shared.Enums;
 using Shared.Exceptions;
 
 namespace BusinessLogic.Services.Implemetation;
@@ -43,7 +44,46 @@ public class DealService : IDealService
         await _activityService.UpdateAsync(activity);
         var newDeal = await _dealRepository.AddAsync(deal);
         var newDealDto = _mapper.Map<DealDto>(newDeal);
+        newDealDto.State = DealState.Active;
+        newDealDto.BookingStart = DateTime.UtcNow;
+        newDealDto.BookingEnd = DateTime.UtcNow;
+        newDealDto.TotalPrice = 0;
         return newDealDto;
+    }
+    public async Task<DealDto> UpdateAsync(DealDto entity)
+    {
+        var existingDeal = await _dealRepository.GetByIdAsync(entity.Id);
+        if (existingDeal == null)
+        {
+            throw new NotFoundException("User not found");
+        }
+        
+        existingDeal.State = entity.State;
+        existingDeal.BookingStart = entity.BookingStart;
+        existingDeal.BookingEnd = entity.BookingEnd;
+        existingDeal.TotalPrice = entity.TotalPrice;
+
+
+        var dealDto = _mapper.Map<DealDto>(await _dealRepository.UpdateAsync(existingDeal));
+        return dealDto;
+    }
+
+    public async Task<DealDto> RateDealAsync(int id, int raiting)
+    {
+        var existingDeal = await _dealRepository.GetByIdAsync(id);
+        if (existingDeal == null)
+        {
+            throw new NotFoundException("User not found");
+        }
+
+        existingDeal.Raiting = raiting;
+        var dealDto = _mapper.Map<DealDto>(await _dealRepository.UpdateAsync(existingDeal));
+        return dealDto;
+    }
+
+    public async Task<bool> ExistsAsync(int id)
+    {
+        return await _dealRepository.ExistsAsync(id);
     }
     
     

@@ -354,7 +354,7 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Entities.Lender", "Owner")
                         .WithMany("Cars")
                         .HasForeignKey("LenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Owner");
@@ -371,13 +371,13 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Entities.Car", "Car")
                         .WithMany("Deals")
                         .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("DataAccess.Entities.Lender", "Lender")
                         .WithMany("Deals")
                         .HasForeignKey("LenderId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Borrower");

@@ -12,4 +12,5 @@ public class DealDto
     public DateTime BookingEnd { get; set; }
     public DealState State { get; set; }
     public float TotalPrice { get; set; }
+    public int Raiting { get; set; }
 }

@@ -8,7 +8,14 @@ using BusinessLogic.Models.Deal;
 using BusinessLogic.Models.Lender;
 using BusinessLogic.Models.User;
 using CarSharingAPI.Requests;
+using CarSharingAPI.Requests.Activity;
+using CarSharingAPI.Requests.Borrower;
+using CarSharingAPI.Requests.Car;
+using CarSharingAPI.Requests.Deal;
+using CarSharingAPI.Requests.Lender;
+using CarSharingAPI.Requests.User;
 using CarSharingAPI.Responses;
+using CarSharingAPI.Responses.Deal;
 using DataAccess.Entities;
 
 namespace CarSharingAPI.Mapping;
@@ -25,7 +32,7 @@ public class MappingProfileApi : Profile
         CreateMap<CarRequest, CarDto>();
         CreateMap<CreateUserRequest, UserDto>();
         CreateMap<ActivityRequest, ActivityDto>();
-        CreateMap<DealRequest, DealDto>();
+        CreateMap<CreateDealRequest, DealDto>();
         CreateMap<LogInRequest, UserDto>();
         CreateMap<SearchCarRequest, CarFilterDto>();
         CreateMap<UserDto, LogInResponse>();
@@ -41,7 +48,7 @@ public class MappingProfileApi : Profile
         CreateMap<IEnumerable<LenderResponse>, IEnumerable<LenderDto>>();
         CreateMap<IEnumerable<BorrowerResponse>, IEnumerable<BorrowerDto>>();
         CreateMap<IEnumerable<ActivityResponse>, IEnumerable<ActivityDto>>();
-        CreateMap<IEnumerable<DealResponse>, IEnumerable<DealDto>>();
+        CreateMap<IEnumerable<CreateDealResponse>, IEnumerable<DealDto>>();
         CreateMap<IQueryable<CarDto>, IQueryable<CarResponse>>();
         CreateMap<IEnumerable<CarDto>, IEnumerable<CarResponse>>();
         CreateMap<IQueryable<ActivityDto>, IQueryable<ActivityResponse>>();

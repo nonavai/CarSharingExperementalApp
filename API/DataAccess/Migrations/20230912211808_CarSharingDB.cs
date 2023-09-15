@@ -85,8 +85,7 @@ namespace DataAccess.Migrations
                         name: "FK_Cars_Lenders_LenderId",
                         column: x => x.LenderId,
                         principalTable: "Lenders",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -166,14 +165,12 @@ namespace DataAccess.Migrations
                         name: "FK_Deals_Cars_CarId",
                         column: x => x.CarId,
                         principalTable: "Cars",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Deals_Lenders_LenderId",
                         column: x => x.LenderId,
                         principalTable: "Lenders",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

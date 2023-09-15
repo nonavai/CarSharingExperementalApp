@@ -13,5 +13,10 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .WithOne(b => b.User)
             .HasForeignKey(r => r.UserId)
             .OnDelete(DeleteBehavior.NoAction);
+        modelBuilder
+            .HasOne(r => r.Role)
+            .WithOne(b => b.User)
+            .HasForeignKey<User>(r => r.RoleId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

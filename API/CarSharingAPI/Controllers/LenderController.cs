@@ -2,6 +2,7 @@
 using BusinessLogic.Models.Lender;
 using BusinessLogic.Services;
 using CarSharingAPI.Requests;
+using CarSharingAPI.Requests.Lender;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarSharingAPI.Controllers;
