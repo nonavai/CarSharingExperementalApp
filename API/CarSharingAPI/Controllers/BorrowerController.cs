@@ -25,8 +25,8 @@ public class BorrowerController : ControllerBase
     }
 
     [HttpGet]
-    [Route("get-id")]
-    public async Task<IActionResult> Get(int id)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Get([FromRoute]int id)
     {
         if (!await _borrowerService.ExistsAsync(id))
         {
@@ -39,7 +39,7 @@ public class BorrowerController : ControllerBase
     }
     
     [HttpGet]
-    [Route("get-all")]
+    [Route("All")]
     public async Task<IActionResult> GetAll()
     {
         var request = await _borrowerService.GetAllAsync();
@@ -48,7 +48,6 @@ public class BorrowerController : ControllerBase
     }
     [Authorize]
     [HttpPost]
-    [Route("Add")]
     public async Task<IActionResult> Create(BorrowerRequest request)
     {
         var dto = _mapper.Map<BorrowerDto>(request);
@@ -58,8 +57,8 @@ public class BorrowerController : ControllerBase
     }
     [Authorize()]//borrower
     [HttpPut]
-    [Route("Update")]
-    public async Task<IActionResult> Edit(int id, [FromBody] BorrowerRequest request)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Edit([FromRoute]int id, [FromBody] BorrowerRequest request)
     {
         if (!await _borrowerService.ExistsAsync(id))
         {
@@ -74,8 +73,8 @@ public class BorrowerController : ControllerBase
     //same id
     [Authorize()]//borrower
     [HttpDelete]
-    [Route("Delete")]
-    public async Task<IActionResult> Delete(int id)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Delete([FromRoute] int id)
     {
         if (!await _borrowerService.ExistsAsync(id))
         {

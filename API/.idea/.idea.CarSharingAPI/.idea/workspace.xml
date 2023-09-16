@@ -13,19 +13,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53df683d-9748-49e1-8a74-aa063f817b35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/Deal/CreateDealRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CarSharingAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CarSharingAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/Models/Deal/DealDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Models/Deal/DealDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/IActivityService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/IActivityService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/IDealService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/IDealService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/IUserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/ActivityService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/ActivityService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/DealService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/DealService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/TokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/TokenService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/UserService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/ref/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/ref/BusinessLogic.dll" afterDir="false" />
@@ -33,40 +27,9 @@
       <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/ActivityController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/ActivityController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/BorrowerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/BorrowerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/CarController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/LenderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/LenderController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/DealController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/DealController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/UserController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Mapping/MappingProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/Activity/ActivityGeoRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/Activity/ActivityGeoRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/Activity/ActivityRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/Activity/ActivityRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/Borrower/BorrowerRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/Borrower/BorrowerRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/Car/CarRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/Car/CarRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/Car/CreateCarRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/Car/CreateCarRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/Car/SearchCarRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/Car/SearchCarRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/Deal/DealRequest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/Lender/LenderRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/Lender/LenderRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/User/CreateUserRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/User/CreateUserRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/User/LogInRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/User/LogInRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/User/UserRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/User/UserRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Responses/Deal/DealResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Responses/Deal/CreateDealResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/ActivityConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/ActivityConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/BorrowerConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/BorrowerConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/CarConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/CarConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/FeedBackConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/FeedBackConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/LenderConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/LenderConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/UserConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/UserConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Entities/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/Migrations/20230905074800_CarSharingDB.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/Migrations/20230905074800_CarSharingDB.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/Migrations/CarSharingContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Migrations/CarSharingContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/ref/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/ref/DataAccess.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/refint/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/refint/DataAccess.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +239,7 @@
       <workItem from="1694588088199" duration="464000" />
       <workItem from="1694591015449" duration="3820000" />
       <workItem from="1694697592880" duration="7242000" />
-      <workItem from="1694774918343" duration="608000" />
+      <workItem from="1694774918343" duration="8763000" />
     </task>
     <servers />
   </component>
@@ -310,10 +273,10 @@
           <line>29</line>
           <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Identity\ValidateTokenAttribute.cs" initialLine="26" containingFunctionPresentation="method 'OnActionExecuting'">
             <startOffsets>
-              <option value="1237" />
+              <option value="1191" />
             </startOffsets>
             <endOffsets>
-              <option value="1265" />
+              <option value="1219" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="30" />
@@ -362,10 +325,10 @@
           <line>25</line>
           <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Identity\ValidateTokenAttribute.cs" initialLine="22" containingFunctionPresentation="method 'OnActionExecuting'">
             <startOffsets>
-              <option value="1122" />
+              <option value="1076" />
             </startOffsets>
             <endOffsets>
-              <option value="1179" />
+              <option value="1133" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="34" />
@@ -375,10 +338,10 @@
           <line>15</line>
           <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Identity\ValidateTokenAttribute.cs" initialLine="13" containingFunctionPresentation="method 'OnActionExecuting'">
             <startOffsets>
-              <option value="534" />
+              <option value="488" />
             </startOffsets>
             <endOffsets>
-              <option value="599" />
+              <option value="553" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="35" />
@@ -388,10 +351,10 @@
           <line>95</line>
           <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Controllers\UserController.cs" initialLine="95" containingFunctionPresentation="method 'Delete'">
             <startOffsets>
-              <option value="2821" />
+              <option value="2862" />
             </startOffsets>
             <endOffsets>
-              <option value="2861" />
+              <option value="2902" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="37" />
@@ -401,10 +364,10 @@
           <line>13</line>
           <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Identity\ValidateTokenAttribute.cs" initialLine="13" containingFunctionPresentation="method 'OnActionExecuting'">
             <startOffsets>
-              <option value="429" />
+              <option value="383" />
             </startOffsets>
             <endOffsets>
-              <option value="516" />
+              <option value="470" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="41" />

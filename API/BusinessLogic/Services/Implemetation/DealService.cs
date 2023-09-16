@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Data;
+using AutoMapper;
 using BusinessLogic.Models.Deal;
 using DataAccess.Entities;
 using DataAccess.Repositories;
@@ -31,17 +32,11 @@ public class DealService : IDealService
         return dealDto;
     }
 
-    public async Task<DealDto> AddAsync(DealDto dealDto)
+    public async Task<DealDto> RegisterDealAsync(DealDto dealDto)
     {
         var deal = _mapper.Map<Deal>(dealDto);
         var activity = await _activityService.GetByCarIdAsync(dealDto.CarId);
-        if (activity == null)
-        {
-            throw new NotFoundException("Deal not found");
-        }
-
-        activity.IsActive = false;
-        await _activityService.UpdateAsync(activity);
+        await _activityService.SetUnactive(activity.Id, false);
         var newDeal = await _dealRepository.AddAsync(deal);
         var newDealDto = _mapper.Map<DealDto>(newDeal);
         newDealDto.State = DealState.Active;
@@ -50,7 +45,17 @@ public class DealService : IDealService
         newDealDto.TotalPrice = 0;
         return newDealDto;
     }
-    public async Task<DealDto> UpdateAsync(DealDto entity)
+
+    public async Task CancelDealAsync(int id)
+    {
+        var deal = await GetByIdAsync(id);
+        var activity = await _activityService.GetByCarIdAsync(deal.CarId);
+        await _activityService.SetUnactive(activity.Id, false);
+        if (deal.TotalPrice > 0) return;
+        var deletedDeal = await _dealRepository.DeleteAsync(id);
+    }
+
+    public async Task<DealDto> ConfirmDealAsync(DealDto entity)
     {
         var existingDeal = await _dealRepository.GetByIdAsync(entity.Id);
         if (existingDeal == null)

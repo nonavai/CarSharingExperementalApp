@@ -24,8 +24,8 @@ public class ActivityController : ControllerBase
     }
 
     [HttpGet]
-    [Route("get-id")]
-    public async Task<IActionResult> Get(int id)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Get([FromRoute]int id)
     {
         if (!await _activityService.ExistsAsync(id))
         {
@@ -38,8 +38,8 @@ public class ActivityController : ControllerBase
     }
     
     [HttpGet]
-    [Route("get-carId")]
-    public async Task<IActionResult> GetByCarId(int id)
+    [Route("Car/{id:int}")]
+    public async Task<IActionResult> GetByCarId([FromRoute]int id)
     {
         if (!await _activityService.ExistsAsync(id))
         {
@@ -52,7 +52,7 @@ public class ActivityController : ControllerBase
     }
     
     [HttpGet]
-    [Route("get-radius")]
+    [Route("InRadious")]
     public async Task<IActionResult> GetByRadius(ActivityGeoRequest activityGeoRequest)
     {
         //if ()    validation
@@ -64,7 +64,7 @@ public class ActivityController : ControllerBase
     }
     
     [HttpGet]
-    [Route("get-all")]
+    [Route("All")]
     public async Task<IActionResult> GetAll()
     {
         var carDtos = await _activityService.GetAllAsync();
@@ -72,8 +72,8 @@ public class ActivityController : ControllerBase
         return Ok(response);
     }
     [HttpPut]
-    [Route("Update")]
-    public async Task<IActionResult> Edit(int id, [FromBody] ActivityRequest request)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Edit([FromRoute] int id, [FromBody] ActivityRequest request)
     {
         if (!await _activityService.ExistsAsync(id))
         {

@@ -109,6 +109,15 @@ public class ActivityService : IActivityService
         var activityDto = _mapper.Map<IQueryable<ActivityDto>>(activity);
         return activityDto;
     }
-    
+
+    public async Task<ActivityDto> SetUnactive(int id, bool active = false)
+    {
+        var activity = await GetByIdAsync(id);
+        activity.IsActive = active;
+        var result = await UpdateAsync(activity);
+        return result;
+    }
+
+
     // add request to check IsActive status
 }

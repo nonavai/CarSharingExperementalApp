@@ -10,7 +10,7 @@ public class ValidateTokenAttribute : ActionFilterAttribute
     public override async void OnActionExecuting(ActionExecutingContext context)
     {
         // Get the token value from the request
-        context.HttpContext.Request.EnableBuffering();
+        
         var reader = await new StreamReader(context.HttpContext.Request.Body).ReadToEndAsync();
         
         var token = context.HttpContext.Request.Headers["Authorization"];

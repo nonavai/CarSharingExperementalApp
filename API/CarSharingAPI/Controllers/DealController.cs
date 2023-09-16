@@ -26,8 +26,8 @@ public class DealController : ControllerBase
     }
 
     [HttpGet]
-    [Route("get-id")]
-    public async Task<IActionResult> Get(int id)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Get([FromRoute] int id)
     {
         if (!await _dealService.ExistsAsync(id))
         {
@@ -41,11 +41,10 @@ public class DealController : ControllerBase
     
 
     [HttpPost]
-    [Route("Add")]
     public async Task<IActionResult> Create(CreateDealRequest entity)
     {
         var dto = _mapper.Map<DealDto>(entity);
-        var responseDto = await _dealService.AddAsync(dto);
+        var responseDto = await _dealService.RegisterDealAsync(dto);
         var response = _mapper.Map<CreateDealResponse>(responseDto);
         return Ok(response);
     }
@@ -53,8 +52,8 @@ public class DealController : ControllerBase
     //[ValidateToken] //to make it work - comment that attribute
     [Authorize]
     [HttpPut]
-    [Route("Confirm")]
-    public async Task<IActionResult> Edit(int id, [FromBody] ConfirmDealRequest entity)
+    [Route("{id:int}/Confirm")]
+    public async Task<IActionResult> Edit([FromRoute] int id, [FromBody] ConfirmDealRequest entity)
     {
         
         if (!await _dealService.ExistsAsync(id))
@@ -64,15 +63,15 @@ public class DealController : ControllerBase
 
         var dealDto = _mapper.Map<DealDto>(entity);
         dealDto.Id = id;
-        var newUserDto = await _dealService.UpdateAsync(dealDto);
+        var newUserDto = await _dealService.ConfirmDealAsync(dealDto);
         var response = _mapper.Map<CreateDealResponse>(newUserDto);
         return Ok(response);
     }
     //[ValidateToken] //to make it work - comment that attribute
     [Authorize]
     [HttpPut]
-    [Route("Rate")]
-    public async Task<IActionResult> Edit(int id, int raiting)
+    [Route("{id:int}/Rate")]
+    public async Task<IActionResult> Edit([FromRoute] int id, int raiting)
     {
         
         if (!await _dealService.ExistsAsync(id))
@@ -83,6 +82,20 @@ public class DealController : ControllerBase
         var newUserDto = await _dealService.RateDealAsync(id, raiting);
         var response = _mapper.Map<CreateDealResponse>(newUserDto);
         return Ok(response);
+    }
+    
+    [Authorize]
+    [HttpDelete]
+    [Route("{id:int}")]
+    public async Task<IActionResult> Delete([FromRoute]int id)
+    {
+        if (!await _dealService.ExistsAsync(id))
+        {
+            return NotFound();
+        }
+
+        await _dealService.CancelDealAsync(id);
+        return Ok();
     }
     
     

@@ -7,4 +7,5 @@ public interface IActivityService : IBaseService<ActivityDto>
 {
     Task<ActivityDto> GetByCarIdAsync(int id);
     Task<IQueryable<ActivityDto>> GetByRadiusAsync(ActivityDtoGeo dto);
+    Task<ActivityDto> SetUnactive(int id,bool active);
 }

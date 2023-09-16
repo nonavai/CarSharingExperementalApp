@@ -26,7 +26,7 @@ public class CarController : ControllerBase
     }
 
     [HttpGet]
-    [Route("get-id")]
+    [Route("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {
         if (!await _carService.ExistsAsync(id))
@@ -39,7 +39,7 @@ public class CarController : ControllerBase
         return Ok(response);
     }
     [HttpGet]
-    [Route("get-many-id")]
+    [Route("Many")]
     public async Task<IActionResult> GetMany(int[] ids)
     {
         var cars = await _carService.GetMany(ids);
@@ -48,7 +48,7 @@ public class CarController : ControllerBase
         return Ok(response);
     }
     [HttpGet]
-    [Route("search")]
+    [Route("Search")]
     public async Task<IActionResult> Search(SearchCarRequest entity)
     {
         var request = _mapper.Map<CarFilterDto>(entity);
@@ -59,7 +59,7 @@ public class CarController : ControllerBase
     }
     
     [HttpGet]
-    [Route("get-all")]
+    [Route("All")]
     public async Task<IActionResult> GetAll()
     {
         var carDtos = await _carService.GetAllAsync();
@@ -70,7 +70,6 @@ public class CarController : ControllerBase
     
     [Authorize()]//lender
     [HttpPost]
-    [Route("Add")]
     public async Task<IActionResult> Create(CreateCarRequest entity)
     {
         var request = _mapper.Map<CarDto>(entity);
@@ -82,8 +81,8 @@ public class CarController : ControllerBase
     // same id 
     [Authorize()]//lender
     [HttpPut]
-    [Route("Update")]
-    public async Task<IActionResult> Edit(int id, [FromBody] CarRequest entity)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Edit([FromRoute] int id, [FromBody] CarRequest entity)
     {
         if (!await _carService.ExistsAsync(id))
         {
@@ -100,8 +99,8 @@ public class CarController : ControllerBase
     // same id 
     [Authorize()]//lender
     [HttpDelete]
-    [Route("Delete")]
-    public async Task<IActionResult> Delete(int id)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Delete([FromRoute] int id)
     {
         if (!await _carService.ExistsAsync(id))
         {

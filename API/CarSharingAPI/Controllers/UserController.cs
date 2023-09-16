@@ -26,8 +26,8 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    [Route("get-id")]
-    public async Task<IActionResult> Get(int id)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Get([FromRoute] int id)
     {
         if (!await _userService.ExistsAsync(id))
         {
@@ -71,8 +71,8 @@ public class UserController : ControllerBase
     //[ValidateToken] //to make it work - comment that attribute
     [Authorize]
     [HttpPut]
-    [Route("Update")]
-    public async Task<IActionResult> Edit(int id, [FromBody] UserRequest entity)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Edit([FromRoute] int id, [FromBody] UserRequest entity)
     {
         
         if (!await _userService.ExistsAsync(id))
@@ -90,8 +90,8 @@ public class UserController : ControllerBase
     [ValidateToken] //to make it work - comment that attribute
     [Authorize]
     [HttpDelete]
-    [Route("Delete")]
-    public async Task<IActionResult> Delete(int id)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Delete([FromRoute]int id)
     {
         if (!await _userService.ExistsAsync(id))
         {
