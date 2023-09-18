@@ -5,7 +5,7 @@ namespace DataAccess.Entities;
 
 public class Borrower : EntityBase
 {
-    public int Id { get; set; }
+    public int UserId { get; set; }
     public DateTime Birth { get; set; }
     public string Country { get; set; }
     [Column(TypeName = "nvarchar(20)")]
@@ -19,6 +19,7 @@ public class Borrower : EntityBase
     public string LicenceId { get; set; }
     public string PlaceOfIssue { get; set; }
     //some info that needed from driver 
+    public User User { get; set; }
     public IEnumerable<Deal> Deals { get; set; }
     public Roles Roles { get; set; }
 }

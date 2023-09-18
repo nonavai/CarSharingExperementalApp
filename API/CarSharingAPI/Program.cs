@@ -1,7 +1,6 @@
 
 using System.Text;
 using BusinessLogic.Mapping;
-using BusinessLogic.Models.Activity;
 using BusinessLogic.Models.Borrower;
 using BusinessLogic.Models.Car;
 using BusinessLogic.Models.User;
@@ -105,8 +104,7 @@ void ConfigureServices(IServiceCollection serviceCollection)
     serviceCollection.AddTransient<IBorrowerRepository, BorrowerRepository>();
     serviceCollection.AddTransient<IBorrowerService, BorrowerService>();
     
-    serviceCollection.AddTransient<IActivityRepository, ActivityRepository>();
-    serviceCollection.AddTransient<IActivityService, ActivityService>();
+
     
     serviceCollection.AddTransient<IDealRepository, DealRepository>();
     serviceCollection.AddTransient<IDealService, DealService>();
@@ -120,7 +118,6 @@ void ConfigureServices(IServiceCollection serviceCollection)
     serviceCollection.AddAutoMapper(typeof(MappingProfile));
     serviceCollection.AddAutoMapper(typeof(MappingProfileApi));
     
-    serviceCollection.AddTransient<IValidator<ActivityDto>, ActivityValidator>();
     serviceCollection.AddTransient<IValidator<BorrowerDto>, BorrowerValidator>();
     serviceCollection.AddTransient<IValidator<CarDto>, CarValidator>();
     //serviceCollection.AddTransient<IValidator<LenderDto>, LenderValidator>();

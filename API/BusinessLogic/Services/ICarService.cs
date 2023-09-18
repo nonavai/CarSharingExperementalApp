@@ -7,5 +7,7 @@ namespace BusinessLogic.Services;
 public interface ICarService : IBaseService<CarDto>
 {
     Task<IQueryable<CarDto>> GetMany(int[] ids);
-    public Task<IQueryable<Car>> SearchCars(CarFilterDto filterDto);
+    Task<CarDto> SetUnactive(int id,bool active);
+    Task<IQueryable<CarDto>> SearchCars(CarFilterDto filterDto);
+    Task<CarDto> UpdateActivityAsync(CarDto entity);
 }

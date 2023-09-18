@@ -4,6 +4,9 @@ namespace CarSharingAPI.Requests.Car;
 
 public class CarRequest
 {
+    public bool? IsActive { get; set; }
+    public float? Latitude { get; set; }
+    public float? Longitude { get; set; }
     public int? Year { get; set; }
     public string? RegistrationNumber { get; set; }
     public string? Mark { get; set; }

@@ -14,22 +14,82 @@
   <component name="ChangeListManager">
     <list default="true" id="53df683d-9748-49e1-8a74-aa063f817b35" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CarSharingAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CarSharingAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/IActivityService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/IActivityService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/IDealService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/IDealService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/ActivityService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/ActivityService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Mapping/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Models/Activity/ActivityDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Models/Activity/ActivityDtoGeo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Models/Car/CarDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Models/Car/CarDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Models/Car/CarFilterDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Models/Car/CarFilterDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Models/Roles/RolesDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Models/Roles/RolesDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Models/Tokens/RefreshTokenDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Models/Tokens/RefreshTokenDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Models/User/UserDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Models/User/UserDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/IActivityService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/ICarService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/ICarService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/IRolesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/IRolesService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/ITokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/ITokenService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/ActivityService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/CarService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/CarService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/DealService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/DealService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/RolesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/RolesService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/TokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/TokenService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Services/Implemetation/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Validators/ActivityValidator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/Validators/CarValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/Validators/CarValidator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/ref/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/ref/BusinessLogic.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/refint/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/refint/BusinessLogic.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/ActivityController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/ActivityController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/BorrowerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/BorrowerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/ActivityController.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/CarController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/DealController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/DealController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Mapping/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Mapping/MappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/Activity/ActivityGeoRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/Activity/ActivityRequest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/Car/CarRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/Car/CarRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Requests/Car/SearchCarRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Requests/Car/SearchCarRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Responses/Activity/ActivityResponse.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Responses/Car/CarResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Responses/Car/CarResponse.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/CarSharingContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/CarSharingContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/ActivityConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/BorrowerConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/BorrowerConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/CarConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/CarConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/DealConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/DealConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/FeedBackConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/FeedBackConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/LenderConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/LenderConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/RolesConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/RolesConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/UserConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/DbContext/Configurations/UserConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Entities/Activity.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Entities/Borrower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Entities/Borrower.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Entities/Car.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Entities/Car.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Entities/Deal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Entities/Deal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Entities/FeedBack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Entities/FeedBack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Entities/IEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Entities/IEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Entities/Lender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Entities/Lender.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Entities/RefreshToken.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Entities/RefreshToken.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Entities/Roles.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Entities/Roles.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Entities/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Migrations/20230912211808_CarSharingDB.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Migrations/20230912211808_CarSharingDB.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Migrations/CarSharingContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Migrations/CarSharingContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Repositories/IActivityRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Repositories/ICarRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Repositories/ICarRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Repositories/IRolesRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Repositories/IRolesRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Repositories/Implementation/ActivityRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Repositories/Implementation/CarRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Repositories/Implementation/CarRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/Repositories/Implementation/RolesRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/Repositories/Implementation/RolesRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/ref/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/ref/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/refint/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/refint/DataAccess.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +299,10 @@
       <workItem from="1694588088199" duration="464000" />
       <workItem from="1694591015449" duration="3820000" />
       <workItem from="1694697592880" duration="7242000" />
-      <workItem from="1694774918343" duration="8763000" />
+      <workItem from="1694774918343" duration="11408000" />
+      <workItem from="1695015751413" duration="6379000" />
+      <workItem from="1695023220163" duration="1140000" />
+      <workItem from="1695024944130" duration="4547000" />
     </task>
     <servers />
   </component>

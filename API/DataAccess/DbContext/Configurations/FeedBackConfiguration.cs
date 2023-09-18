@@ -9,14 +9,14 @@ public class FeedBackConfiguration : IEntityTypeConfiguration<FeedBack>
     public void Configure(EntityTypeBuilder<FeedBack> modelBuilder)
     {
         modelBuilder
-            .HasOne(b => b.Car)
-            .WithMany(d => d.FeedBack)
-            .HasForeignKey(d => d.CarId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .HasOne(f => f.User)
+            .WithMany(u => u.FeedBacks)
+            .HasForeignKey(f => f.UserId)
+            .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
         modelBuilder
-            .HasOne(b => b.User)
-            .WithMany(d => d.FeedBacks)
-            .HasForeignKey(d => d.UserId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .HasOne(f => f.Car)
+            .WithMany(c => c.FeedBacks)
+            .HasForeignKey(f => f.CarId)
+            .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
     }
 }

@@ -18,7 +18,6 @@ public class CarController : ControllerBase
     private readonly IMapper _mapper;
     private readonly ICarService _carService;
 
-
     public CarController(CarService carService, IMapper mapper)
     {
         _carService = carService;
@@ -111,4 +110,5 @@ public class CarController : ControllerBase
         var response = _mapper.Map<CarResponse>(responseDto);
         return Ok(response);
     }
+    
 }

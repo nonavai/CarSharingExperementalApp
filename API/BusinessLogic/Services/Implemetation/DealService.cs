@@ -10,15 +10,15 @@ namespace BusinessLogic.Services.Implemetation;
 
 public class DealService : IDealService
 {
-    private readonly IActivityService _activityService;
+    private readonly ICarService _carService;
     private readonly IDealRepository _dealRepository;
     private readonly IMapper _mapper;
 
-    public DealService(IActivityService activityService, IMapper mapper, IDealRepository dealRepository)
+    public DealService(IMapper mapper, IDealRepository dealRepository, ICarService carService)
     {
-        _activityService = activityService;
         _mapper = mapper;
         _dealRepository = dealRepository;
+        _carService = carService;
     }
     
     public async Task<DealDto> GetByIdAsync(int id)
@@ -35,8 +35,7 @@ public class DealService : IDealService
     public async Task<DealDto> RegisterDealAsync(DealDto dealDto)
     {
         var deal = _mapper.Map<Deal>(dealDto);
-        var activity = await _activityService.GetByCarIdAsync(dealDto.CarId);
-        await _activityService.SetUnactive(activity.Id, false);
+        await _carService.SetUnactive(dealDto.Id, false);
         var newDeal = await _dealRepository.AddAsync(deal);
         var newDealDto = _mapper.Map<DealDto>(newDeal);
         newDealDto.State = DealState.Active;
@@ -49,8 +48,7 @@ public class DealService : IDealService
     public async Task CancelDealAsync(int id)
     {
         var deal = await GetByIdAsync(id);
-        var activity = await _activityService.GetByCarIdAsync(deal.CarId);
-        await _activityService.SetUnactive(activity.Id, false);
+        await _carService.SetUnactive(deal.CarId, false);
         if (deal.TotalPrice > 0) return;
         var deletedDeal = await _dealRepository.DeleteAsync(id);
     }
@@ -80,7 +78,7 @@ public class DealService : IDealService
         {
             throw new NotFoundException("User not found");
         }
-
+        await _carService.SetUnactive(existingDeal.CarId, false);
         existingDeal.Raiting = raiting;
         var dealDto = _mapper.Map<DealDto>(await _dealRepository.UpdateAsync(existingDeal));
         return dealDto;

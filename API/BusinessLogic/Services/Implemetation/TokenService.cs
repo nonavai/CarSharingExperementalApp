@@ -49,7 +49,6 @@ public class TokenService : ITokenService
         {
             Token = new JwtSecurityTokenHandler().WriteToken(token),
             UserId = user.Id,
-            UserRoleId = user.RoleId,
             ExpiresAt = token.ValidTo
         };
         var refreshToken = _mapper.Map<RefreshToken>(refreshTokenDto);
@@ -85,7 +84,7 @@ public class TokenService : ITokenService
             new Claim(JwtRegisteredClaimNames.Sub, Guid.NewGuid().ToString()),
             new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString())
         };
-        await AddClaimRoles(refreshToken.UserRoleId, claims);
+        await AddClaimRoles(refreshToken.UserId, claims);
         
         var token = new JwtSecurityToken(
             issuer: _configuration["JwtSettings:Issuer"],
@@ -96,7 +95,7 @@ public class TokenService : ITokenService
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
-    public async Task<RefreshTokenDto> GetByUserId(int id)
+    public async Task<RefreshTokenDto> GetByUserIdAsync(int id)
     {
         var refreshToken = await _refreshTokenRepository.GetByUserId(id);
         if (refreshToken == null)
@@ -128,9 +127,9 @@ public class TokenService : ITokenService
     }
 
 
-    private async Task AddClaimRoles(int roleId, List<Claim> claims)
+    private async Task AddClaimRoles(int userId, List<Claim> claims)
     {
-        var roles = await _rolesService.GetByIdAsync(roleId);
+        var roles = await _rolesService.GetByUserIdAsync(userId);
         if (roles.Admin) claims.Add(new Claim(ClaimTypes.Role, "Admin"));
         if (roles.BorrowerId.HasValue) claims.Add(new Claim(ClaimTypes.Role, "Borrower"));
         if (roles.LenderId.HasValue) claims.Add(new Claim(ClaimTypes.Role, "Lender"));

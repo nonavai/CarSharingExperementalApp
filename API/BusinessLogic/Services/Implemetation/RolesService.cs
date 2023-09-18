@@ -75,4 +75,16 @@ public class RolesService : IRolesService
     {
         return await _rolesRepository.ExistsAsync(id);
     }
+
+    public async Task<RolesDto> GetByUserIdAsync(int id)
+    {
+        var refreshToken = await _rolesRepository.GetByUserIdAsync(id);
+        if (refreshToken == null)
+        {
+            throw new NotVerifiedException("token not found");
+        }
+
+        var refreshTokenDto = _mapper.Map<RolesDto>(refreshToken);
+        return refreshTokenDto;
+    }
 }

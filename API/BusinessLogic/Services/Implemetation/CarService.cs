@@ -72,6 +72,29 @@ public class CarService : ICarService
         var carDto = _mapper.Map<CarDto>( await _carRepository.UpdateAsync(existingCar));
         return carDto;
     }
+    public async Task<CarDto> UpdateActivityAsync(CarDto entity)
+    {
+        
+        var existingCar = await _carRepository.GetByIdAsync(entity.Id);
+        if (existingCar == null)
+        {
+            throw new NotFoundException("Car not found");
+        }
+        var validationResult = _validator.Validate(entity);
+        
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors.ToString());
+        }
+
+        existingCar.IsActive = entity.IsActive;
+        existingCar.Latitude = entity.Latitude;
+        existingCar.Longitude = entity.Longitude;
+
+        var carDto = _mapper.Map<CarDto>( await _carRepository.UpdateAsync(existingCar));
+        return carDto;
+    }
+    
 
     
     public async Task<CarDto> DeleteAsync(int id)
@@ -98,18 +121,29 @@ public class CarService : ICarService
         return carDtos;
     }
 
-    public async Task<IQueryable<Car>> SearchCars(CarFilterDto filterDto)
+    public async Task<IQueryable<CarDto>> SearchCars(CarFilterDto filterDto)
     {
         var cars = await _carRepository.SearchCars(
-            MinPrice: filterDto.MaxPrice,
-            Mark: filterDto.Mark,
-            FuelType: filterDto.FuelType,
-            MaxPrice: filterDto.MaxPrice,
-            MaxYear: filterDto.MaxYear,
-            MinYear: filterDto.MinYear,
-            VehicleType: filterDto.VehicleType
+            radiusKm: filterDto.RadiusKm,
+            latitude: filterDto.Latitude,
+            longitude: filterDto.Longitude,
+            isActive: filterDto.IsActive,
+            minPrice: filterDto.MaxPrice,
+            mark: filterDto.Mark,
+            fuelType: filterDto.FuelType,
+            maxPrice: filterDto.MaxPrice,
+            maxYear: filterDto.MaxYear,
+            minYear: filterDto.MinYear,
+            vehicleType: filterDto.VehicleType
             );
         var carDtos = _mapper.Map<IQueryable<CarDto>>(cars);
-        return cars;
+        return carDtos;
+    }
+    public async Task<CarDto> SetUnactive(int id, bool active = false)
+    {
+        var activity = await GetByIdAsync(id);
+        activity.IsActive = active;
+        var result = await UpdateActivityAsync(activity);
+        return result;
     }
 }

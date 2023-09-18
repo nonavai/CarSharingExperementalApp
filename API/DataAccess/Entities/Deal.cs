@@ -4,7 +4,6 @@ namespace DataAccess.Entities;
 
 public class Deal : EntityBase
 {
-    public int Id { get; set; }
     public int LenderId { get; set; }
     public int CarId { get; set; }
     public int BorrowerId { get; set; }

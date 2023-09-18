@@ -9,16 +9,19 @@ public class RolesConfiguration : IEntityTypeConfiguration<Roles>
     public void Configure(EntityTypeBuilder<Roles> modelBuilder)
     {
         modelBuilder
-            .HasOne(r => r.Lender)
-            .WithOne(l => l.Roles)
-            .HasForeignKey<Roles>(r => r.LenderId)
-            .IsRequired(false)
-            .OnDelete(DeleteBehavior.Cascade);
+            .HasOne(r => r.User)
+            .WithOne(u => u.Role)
+            .HasForeignKey<Roles>(r => r.UserId)
+            .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
         modelBuilder
             .HasOne(r => r.Borrower)
             .WithOne(b => b.Roles)
             .HasForeignKey<Roles>(r => r.BorrowerId)
-            .IsRequired(false)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
+        modelBuilder
+            .HasOne(r => r.Lender)
+            .WithOne(b => b.Roles)
+            .HasForeignKey<Roles>(r => r.LenderId)
+            .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
     }
 }

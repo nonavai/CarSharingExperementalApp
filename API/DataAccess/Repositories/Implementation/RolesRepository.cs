@@ -13,4 +13,9 @@ public class RolesRepository : GenericRepository<Roles> , IRolesRepository
     {
         this.db = db;
     }
+
+    public async Task<Roles?> GetByUserIdAsync(int id)
+    {
+        return db.Roles.FirstOrDefault(f => f.UserId == id);
+    }
 }

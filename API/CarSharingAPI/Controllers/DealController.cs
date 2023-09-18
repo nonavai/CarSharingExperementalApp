@@ -41,7 +41,7 @@ public class DealController : ControllerBase
     
 
     [HttpPost]
-    public async Task<IActionResult> Create(CreateDealRequest entity)
+    public async Task<IActionResult> Register(CreateDealRequest entity)
     {
         var dto = _mapper.Map<DealDto>(entity);
         var responseDto = await _dealService.RegisterDealAsync(dto);
@@ -53,7 +53,7 @@ public class DealController : ControllerBase
     [Authorize]
     [HttpPut]
     [Route("{id:int}/Confirm")]
-    public async Task<IActionResult> Edit([FromRoute] int id, [FromBody] ConfirmDealRequest entity)
+    public async Task<IActionResult> Confirm([FromRoute] int id, [FromBody] ConfirmDealRequest entity)
     {
         
         if (!await _dealService.ExistsAsync(id))
@@ -71,7 +71,7 @@ public class DealController : ControllerBase
     [Authorize]
     [HttpPut]
     [Route("{id:int}/Rate")]
-    public async Task<IActionResult> Edit([FromRoute] int id, int raiting)
+    public async Task<IActionResult> Rate([FromRoute] int id, int raiting)
     {
         
         if (!await _dealService.ExistsAsync(id))
@@ -87,7 +87,7 @@ public class DealController : ControllerBase
     [Authorize]
     [HttpDelete]
     [Route("{id:int}")]
-    public async Task<IActionResult> Delete([FromRoute]int id)
+    public async Task<IActionResult> Cancel([FromRoute]int id)
     {
         if (!await _dealService.ExistsAsync(id))
         {

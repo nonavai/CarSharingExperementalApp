@@ -5,11 +5,11 @@ namespace DataAccess.Entities;
 
 public class Car : EntityBase
 {
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
     public int LenderId { get; set; }
     
-    
+    public bool IsActive { get; set; }
+    public float Latitude { get; set; }
+    public float Longitude { get; set; }
     public int Year { get; set; }
     public string RegistrationNumber { get; set; }
     public string Mark { get; set; }
@@ -27,15 +27,16 @@ public class Car : EntityBase
     
     
     
+    
     //срок действия техосмотра
     
     // добавить сервис который будет проверять техосмотр каждый день
     
     // добавить страховку
 
-    public IEnumerable<FeedBack>? FeedBack { get; set; }
+    public IEnumerable<FeedBack> FeedBacks { get; set; }
     public IEnumerable<Deal> Deals { get; set; }
-    public Lender Owner { get; set; }
-    public Activity Activity { get; set; }
+    public Lender Lender { get; set; }
+
 
 }

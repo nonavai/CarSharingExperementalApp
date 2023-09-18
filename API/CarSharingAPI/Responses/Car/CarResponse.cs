@@ -14,4 +14,7 @@ public record CarResponse
     public FuelType FuelType { get; set; }
     public VehicleType VehicleType  { get; set; }
     public string Color  { get; set; }
+    public bool IsActive { get; set; }
+    public float Latitude { get; set; }
+    public float Longitude { get; set; }
 }
