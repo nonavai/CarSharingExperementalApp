@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessLogic.Models.RefreshToken;
 using BusinessLogic.Models.User;
 using BusinessLogic.Services;
 using CarSharingAPI.Identity;
@@ -55,6 +56,8 @@ public class UserController : ControllerBase
         var accessToken = await _tokenService.GenerateAccessToken(newRefreshToken);
         response.RefreshToken = newRefreshToken.Token;
         response.accessToken = accessToken;
+        Response.Cookies.Append("Authorization", accessToken);
+        Response.Cookies.Append("AuthorizationRefresh", newRefreshToken.Token);
         return Ok(response);
     }
 
@@ -102,5 +105,23 @@ public class UserController : ControllerBase
         var response = _mapper.Map<UserDto>(responseDto);
         return Ok(response);
     }
+    
+    
+    [HttpPost]
+    [Route("UpdateToken")]
+    public async Task<IActionResult> RefreshToken()
+    {
+        var refreshToken = Request.Cookies["AuthorizationRefresh"];
+        if (refreshToken == null)
+        {
+            return BadRequest("Invalid token");
+        }
 
+        var userId = await _tokenService.GetUserIdFromToken(refreshToken);
+        var token = new RefreshTokenDto() { UserId = userId, Token = refreshToken };
+        var newAccessToken = await _tokenService.GenerateAccessToken(token);
+        Response.Cookies.Delete("Authorization");
+        Response.Cookies.Append("Authorization", newAccessToken);
+        return Ok(newAccessToken);
+    }
 }

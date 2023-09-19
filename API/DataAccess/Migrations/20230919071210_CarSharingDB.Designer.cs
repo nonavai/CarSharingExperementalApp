@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(CarSharingContext))]
-    [Migration("20230918090621_CarSharingDB")]
+    [Migration("20230919071210_CarSharingDB")]
     partial class CarSharingDB
     {
         /// <inheritdoc />
@@ -270,11 +270,9 @@ namespace DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int?>("BorrowerId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("LenderId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -283,10 +281,12 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BorrowerId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[BorrowerId] IS NOT NULL");
 
                     b.HasIndex("LenderId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[LenderId] IS NOT NULL");
 
                     b.HasIndex("UserId")
                         .IsUnique();
@@ -418,14 +418,12 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Entities.Borrower", "Borrower")
                         .WithOne("Roles")
                         .HasForeignKey("DataAccess.Entities.Roles", "BorrowerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DataAccess.Entities.Lender", "Lender")
                         .WithOne("Roles")
                         .HasForeignKey("DataAccess.Entities.Roles", "LenderId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DataAccess.Entities.User", "User")
                         .WithOne("Role")

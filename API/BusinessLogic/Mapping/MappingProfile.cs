@@ -19,16 +19,16 @@ public class MappingProfile : Profile
         CreateMap<User, UserDto>();
         CreateMap<Roles, RolesDto>();
         CreateMap<RolesDto, Roles>();
-        CreateMap<Car, CarDto>();
         CreateMap<Borrower, BorrowerDto>();
         CreateMap<Lender, LenderDto>();
-        CreateMap<Deal, DealDto>();
-        CreateMap<FeedBack, FeedBackDto>();
+        CreateMap<LenderDto, Lender>();
+        CreateMap<Car, CarDto>();
         CreateMap<CarDto, Car>();
         CreateMap<BorrowerDto, Borrower>();
-        CreateMap<LenderDto, Lender>();
         CreateMap<DealDto, Deal>();
+        CreateMap<Deal, DealDto>();
         CreateMap<FeedBackDto, FeedBack>();
+        CreateMap<FeedBack, FeedBackDto>();
         CreateMap<RefreshToken, RefreshTokenDto>();
         CreateMap<RefreshTokenDto, RefreshToken>();
         

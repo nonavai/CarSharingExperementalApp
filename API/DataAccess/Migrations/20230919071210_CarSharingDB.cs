@@ -133,8 +133,8 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Admin = table.Column<bool>(type: "bit", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    BorrowerId = table.Column<int>(type: "int", nullable: false),
-                    LenderId = table.Column<int>(type: "int", nullable: false)
+                    BorrowerId = table.Column<int>(type: "int", nullable: true),
+                    LenderId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -271,13 +271,15 @@ namespace DataAccess.Migrations
                 name: "IX_Roles_BorrowerId",
                 table: "Roles",
                 column: "BorrowerId",
-                unique: true);
+                unique: true,
+                filter: "[BorrowerId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Roles_LenderId",
                 table: "Roles",
                 column: "LenderId",
-                unique: true);
+                unique: true,
+                filter: "[LenderId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Roles_UserId",

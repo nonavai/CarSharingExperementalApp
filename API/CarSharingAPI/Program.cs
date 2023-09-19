@@ -3,6 +3,7 @@ using System.Text;
 using BusinessLogic.Mapping;
 using BusinessLogic.Models.Borrower;
 using BusinessLogic.Models.Car;
+using BusinessLogic.Models.Roles;
 using BusinessLogic.Models.User;
 using BusinessLogic.Services;
 using BusinessLogic.Services.Implemetation;
@@ -11,11 +12,13 @@ using CarSharingAPI.Extensions;
 using CarSharingAPI.Mapping;
 using CarSharingAPI.Middleware;
 using DataAccess.DbContext;
+using DataAccess.Entities;
 using FluentValidation.AspNetCore;
 using DataAccess.Repositories;
 using DataAccess.Repositories.Implementation;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -39,14 +42,6 @@ builder.Services.AddAuthentication(x =>
         ValidateIssuerSigningKey = true
     });
 
-/*builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy();
-});*/
-/*builder.Services.AddAuthentication(x =>
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme);
-builder.Services.AddAuthentication(x =>
-    x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme);*/
 
 
 // Add services to the container.

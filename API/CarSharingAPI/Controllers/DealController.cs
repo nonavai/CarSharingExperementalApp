@@ -2,7 +2,6 @@ using AutoMapper;
 using BusinessLogic.Models.Deal;
 using BusinessLogic.Models.User;
 using BusinessLogic.Services;
-using CarSharingAPI.Identity;
 using CarSharingAPI.Requests.Deal;
 using CarSharingAPI.Requests.User;
 using CarSharingAPI.Responses;

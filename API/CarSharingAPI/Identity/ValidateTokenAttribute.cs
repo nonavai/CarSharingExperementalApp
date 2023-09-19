@@ -11,9 +11,9 @@ public class ValidateTokenAttribute : ActionFilterAttribute
     {
         // Get the token value from the request
         
-        var reader = await new StreamReader(context.HttpContext.Request.Body).ReadToEndAsync();
+        //var reader = await new StreamReader(context.HttpContext.Request.Body).ReadToEndAsync();
         
-        var token = context.HttpContext.Request.Headers["Authorization"];
+        var token = context.HttpContext.Request.Cookies["Authorization"];
         // Get the user id from the token
         var tokenService = context.HttpContext.RequestServices.GetService<ITokenService>();
         var userId = await tokenService.GetUserIdFromToken(token);

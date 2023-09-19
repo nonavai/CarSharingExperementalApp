@@ -55,10 +55,10 @@ public class UserService : IUserService
         }
         
         // CREATING USER ROLES
-        var roles = new RolesDto() { Admin = false, BorrowerId= null, LenderId = null};
-        var roleDto =await _rolesService.AddAsync(roles);
         User user = _mapper.Map<User>(entity);
         var compitedUser = await _userRepository.AddAsync(user);
+        var roles = new RolesDto() {UserId = compitedUser.Id ,Admin = false, BorrowerId= null, LenderId = null};
+        var roleDto = await _rolesService.AddAsync(roles);
         var userDto = _mapper.Map<UserDto>(  compitedUser);
         return userDto;
     }

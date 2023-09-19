@@ -36,6 +36,9 @@ public class MappingProfileApi : Profile
         CreateMap<CarDto, CarResponse>();
         CreateMap<BorrowerDto, BorrowerResponse>();
         CreateMap<LenderDto, LenderResponse>();
+        CreateMap<DealDto, DealResponse>();
+        CreateMap<DealDto, CreateDealResponse>();
+        
 
         CreateMap<IEnumerable<UserResponse>, IEnumerable<UserDto>>();
         CreateMap<IEnumerable<LenderResponse>, IEnumerable<LenderDto>>();

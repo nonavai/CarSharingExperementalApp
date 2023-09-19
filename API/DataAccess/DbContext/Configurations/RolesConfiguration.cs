@@ -17,11 +17,13 @@ public class RolesConfiguration : IEntityTypeConfiguration<Roles>
             .HasOne(r => r.Borrower)
             .WithOne(b => b.Roles)
             .HasForeignKey<Roles>(r => r.BorrowerId)
+            .IsRequired(false)
             .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
         modelBuilder
             .HasOne(r => r.Lender)
             .WithOne(b => b.Roles)
             .HasForeignKey<Roles>(r => r.LenderId)
+            .IsRequired(false)
             .OnDelete(deleteBehavior: DeleteBehavior.Restrict);
     }
 }
