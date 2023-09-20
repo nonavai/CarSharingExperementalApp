@@ -12,7 +12,43 @@
     <projectFile profileName="IIS Express">CarSharingAPI/CarSharingAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="53df683d-9748-49e1-8a74-aa063f817b35" name="Changes" comment="" />
+=======
+    <list default="true" id="53df683d-9748-49e1-8a74-aa063f817b35" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CarSharingAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CarSharingAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/BusinessLogic.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/DataAccess.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/Shared.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/Shared.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/Shared.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/bin/Debug/net7.0/Shared.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/BusinessLogic.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/ref/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/ref/BusinessLogic.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/refint/BusinessLogic.dll" beforeDir="false" afterPath="$PROJECT_DIR$/BusinessLogic/obj/Debug/net7.0/refint/BusinessLogic.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/DataAccess.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/Shared.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/Shared.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/Shared.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/bin/Debug/net7.0/Shared.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/DataAccess.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/ref/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/ref/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/refint/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/DataAccess/obj/Debug/net7.0/refint/DataAccess.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/bin/Debug/net7.0/Shared.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/bin/Debug/net7.0/Shared.deps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/bin/Debug/net7.0/Shared.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/bin/Debug/net7.0/Shared.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/bin/Debug/net7.0/Shared.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/bin/Debug/net7.0/Shared.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/obj/Debug/net7.0/Shared.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/obj/Debug/net7.0/Shared.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/obj/Debug/net7.0/Shared.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/obj/Debug/net7.0/Shared.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/obj/Debug/net7.0/Shared.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/obj/Debug/net7.0/Shared.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/obj/Debug/net7.0/Shared.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/obj/Debug/net7.0/Shared.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/obj/Debug/net7.0/Shared.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/obj/Debug/net7.0/Shared.pdb" afterDir="false" />
+    </list>
+>>>>>>> develop
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,8 +56,29 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18ed087f18a54546a19b94e666ab800215d88/8a/1518f8d8/JwtRegisteredClaimNames.cs" root0="SKIP_HIGHLIGHTING" />
+<<<<<<< HEAD
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/14e8d8f5e08f22b1d8552e71c61d2a59ca14fa4bba4c12a6b94e86fc846e8fd/JwtSecurityTokenHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9d7564e4d0e58f3393727b246ae48b17f8a9e3670fbe5af23fd52778348e3e8/HttpResponse.cs" root0="SKIP_HIGHLIGHTING" />
+=======
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e4905fb04e9143a383cf15c59a6d1a9c1fcb98/9a/95a87ece/ReferenceReferenceBuilder`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/14e8d8f5e08f22b1d8552e71c61d2a59ca14fa4bba4c12a6b94e86fc846e8fd/JwtSecurityTokenHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3684e888fd93508450e2f4b0d7d38bee648cba98882592491596fc79375185f/SwaggerMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/43e1aa5e3aebf618e7bc17d95f31d7f5a97dac2043b1c74ceea319e68af4c7/FormFeature.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6da59a1c9a96b9118be81b526ed0f46e5f476070c63f9084415fbfdccb111e/IdentityServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/70df3e5caa697356d2da36622f77875efdb4473eafb5bfb84fe07e71a22b9499/EntityFrameworkServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/81a3bcf4bb6aa5e62a9839f9cfeeba6126496f4fa07d1e57b27a5176e42525/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9d7564e4d0e58f3393727b246ae48b17f8a9e3670fbe5af23fd52778348e3e8/HttpResponse.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ba42fa83f66411607f71ed975b8e32754845f82070f9872d3b77d0a9c25de28/ClaimsPrincipal.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ee2f7813999c5c89191621f487a4319f1dd74c1be9839e0fcb2c5a1b0ffbca9/DeleteBehavior.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ee456ec7f2e479b4eaa66183eaa0d1365ef16c4615282c4e7dccacdcc14dda/ArgumentNullException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Shared/Enums/DealState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Shared/Enums/FuelType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Shared/Enums/LicenceCategory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Shared/Enums/UserRole.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Shared/Enums/VehicleType.cs" root0="FORCE_HIGHLIGHTING" />
+>>>>>>> develop
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -44,7 +101,11 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+<<<<<<< HEAD
     &quot;settings.editor.selected.configurable&quot;: &quot;ReSpellerSettingsId&quot;,
+=======
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+>>>>>>> develop
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -201,6 +262,17 @@
       <workItem from="1691086773733" duration="13805000" />
       <workItem from="1691365934166" duration="4482000" />
       <workItem from="1691445013310" duration="57686000" />
+      <workItem from="1692367293578" duration="449000" />
+      <workItem from="1692367894236" duration="566000" />
+      <workItem from="1692368513513" duration="46870000" />
+      <workItem from="1694588088199" duration="464000" />
+      <workItem from="1694591015449" duration="3820000" />
+      <workItem from="1694697592880" duration="7242000" />
+      <workItem from="1694774918343" duration="11408000" />
+      <workItem from="1695015751413" duration="6379000" />
+      <workItem from="1695023220163" duration="1140000" />
+      <workItem from="1695024944130" duration="11542000" />
+      <workItem from="1695122887787" duration="3447000" />
     </task>
     <servers />
   </component>
@@ -221,23 +293,91 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BusinessLogic/Services/Implemetation/UserService.cs</url>
-          <line>48</line>
-          <properties documentPath="C:\rider\c#projects\CarSharing_app\API\BusinessLogic\Services\Implemetation\UserService.cs" initialLine="48" containingFunctionPresentation="method 'AddAsync'">
+          <url>file://$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs</url>
+          <line>26</line>
+          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Identity\ValidateTokenAttribute.cs" initialLine="26" containingFunctionPresentation="method 'OnActionExecuting'">
             <startOffsets>
-              <option value="1405" />
+              <option value="1023" />
             </startOffsets>
             <endOffsets>
-              <option value="1471" />
+              <option value="1051" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CarSharingAPI/Middleware/ExceptionMiddleware.cs</url>
+          <line>29</line>
+          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Middleware\ExceptionMiddleware.cs" initialLine="29" containingFunctionPresentation="method 'HandleExceptionAsync'">
+            <startOffsets>
+              <option value="645" />
+            </startOffsets>
+            <endOffsets>
+              <option value="695" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs</url>
+          <line>22</line>
+          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Identity\ValidateTokenAttribute.cs" initialLine="22" containingFunctionPresentation="method 'OnActionExecuting'">
+            <startOffsets>
+              <option value="908" />
+            </startOffsets>
+            <endOffsets>
+              <option value="965" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CarSharingAPI/Controllers/UserController.cs</url>
+          <line>98</line>
+          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Controllers\UserController.cs" initialLine="95" containingFunctionPresentation="method 'Delete'">
+            <startOffsets>
+              <option value="3046" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3086" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs</url>
+          <line>19</line>
+          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Identity\ValidateTokenAttribute.cs" initialLine="23" containingFunctionPresentation="method 'OnActionExecuting'">
+            <startOffsets>
+              <option value="696" />
+            </startOffsets>
+            <endOffsets>
+              <option value="754" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CarSharingAPI/Identity/ValidateTokenAttribute.cs</url>
+          <line>20</line>
+          <properties documentPath="C:\rider\c#projects\CarSharingApp\API\CarSharingAPI\Identity\ValidateTokenAttribute.cs" initialLine="20" containingFunctionPresentation="method 'OnActionExecuting'">
+            <startOffsets>
+              <option value="853" />
+            </startOffsets>
+            <endOffsets>
+              <option value="899" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

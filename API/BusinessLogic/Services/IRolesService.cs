@@ -5,5 +5,5 @@ namespace BusinessLogic.Services;
 
 public interface IRolesService : IBaseService<RolesDto>
 {
-    
+    Task<RolesDto> GetByUserIdAsync(int id);
 }

@@ -3,6 +3,7 @@ using BusinessLogic.Models.Car;
 using BusinessLogic.Models.Roles;
 using DataAccess.Entities;
 using DataAccess.Repositories;
+using Shared.Exceptions;
 
 namespace BusinessLogic.Services.Implemetation;
 
@@ -22,7 +23,7 @@ public class RolesService : IRolesService
         var roles = await _rolesRepository.GetByIdAsync(id);
         if (roles == null)
         {
-            throw new Exception("Roles not found");
+            throw new NotFoundException("Roles not found");
         }
         var rolesDto = _mapper.Map<RolesDto>( roles);
         return rolesDto;
@@ -47,7 +48,7 @@ public class RolesService : IRolesService
         var existingRoles = await _rolesRepository.GetByIdAsync(entity.Id);
         if (existingRoles == null)
         {
-            throw new Exception("Roles not found");
+            throw new NotFoundException("Roles not found");
         }
         existingRoles.Admin = entity.Admin;
         existingRoles.BorrowerId = entity.BorrowerId;
@@ -63,7 +64,7 @@ public class RolesService : IRolesService
         var roles = await _rolesRepository.GetByIdAsync(id);
         if (roles == null)
         {
-            throw new ArgumentException("Roles not found");
+            throw new NotFoundException("Roles not found");
         }
         
         var rolesDto = _mapper.Map<RolesDto>( await _rolesRepository.DeleteAsync(id));
@@ -73,5 +74,17 @@ public class RolesService : IRolesService
     public async Task<bool> ExistsAsync(int id)
     {
         return await _rolesRepository.ExistsAsync(id);
+    }
+
+    public async Task<RolesDto> GetByUserIdAsync(int id)
+    {
+        var refreshToken = await _rolesRepository.GetByUserIdAsync(id);
+        if (refreshToken == null)
+        {
+            throw new NotVerifiedException("token not found");
+        }
+
+        var refreshTokenDto = _mapper.Map<RolesDto>(refreshToken);
+        return refreshTokenDto;
     }
 }

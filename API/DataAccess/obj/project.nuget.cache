@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "qn020C9ET8GpQUDrumJCYoXuaqPuxyyex4UyzlqjcYXXDq17Ppsih6vVfTB7uEXqot1x23+LZCFH+NZ8Y0x4BQ==",
+=======
+  "dgSpecHash": "ZWMV+RBTvKbaR/5fhQmmsAurzYT/YOchOYw04a+OuoxQ/7LURUpyDdJoUlE9rLRfE0DeWj2wQSi7e9oP632iUg==",
+>>>>>>> develop
   "success": true,
   "projectFilePath": "C:\\rider\\c#projects\\CarSharingApp\\API\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [

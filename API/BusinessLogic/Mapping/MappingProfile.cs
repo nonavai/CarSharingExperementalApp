@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
-using BusinessLogic.Models;
-using BusinessLogic.Models.Activity;
 using BusinessLogic.Models.Borrower;
 using BusinessLogic.Models.Car;
 using BusinessLogic.Models.Deal;
 using BusinessLogic.Models.FeedBack;
 using BusinessLogic.Models.Lender;
+using BusinessLogic.Models.RefreshToken;
 using BusinessLogic.Models.Roles;
 using BusinessLogic.Models.User;
 using DataAccess.Entities;
@@ -16,26 +15,32 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
+        CreateMap<UserDto, User>();
         CreateMap<User, UserDto>();
-        CreateMap<Car, CarDto>();
+        CreateMap<Roles, RolesDto>();
+        CreateMap<RolesDto, Roles>();
         CreateMap<Borrower, BorrowerDto>();
         CreateMap<Lender, LenderDto>();
-        CreateMap<Activity, ActivityDto>();
+        CreateMap<LenderDto, Lender>();
+        CreateMap<Car, CarDto>();
+        CreateMap<CarDto, Car>();
+        CreateMap<BorrowerDto, Borrower>();
+        CreateMap<DealDto, Deal>();
         CreateMap<Deal, DealDto>();
+        CreateMap<FeedBackDto, FeedBack>();
         CreateMap<FeedBack, FeedBackDto>();
-        CreateMap<Roles, RolesDto>();
+        CreateMap<RefreshToken, RefreshTokenDto>();
+        CreateMap<RefreshTokenDto, RefreshToken>();
         
         CreateMap<IEnumerable<User>, IEnumerable<UserDto>>();
         CreateMap<IEnumerable<Roles>, IEnumerable<RolesDto>>();
         CreateMap<IEnumerable<Lender>, IEnumerable<LenderDto>>();
         CreateMap<IEnumerable<Borrower>, IEnumerable<BorrowerDto>>();
-        CreateMap<IEnumerable<Activity>, IEnumerable<ActivityDto>>();
         CreateMap<IEnumerable<Deal>, IEnumerable<DealDto>>();
         CreateMap<IEnumerable<FeedBack>, IEnumerable<FeedBackDto>>();
         CreateMap<IQueryable<CarDto>, IQueryable<Car>>();
         CreateMap<IEnumerable<CarDto>, IEnumerable<Car>>();
-        CreateMap<IQueryable<ActivityDto>, IQueryable<Activity>>();
-        
+
 
 
 

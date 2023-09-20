@@ -1,10 +1,13 @@
-﻿namespace DataAccess.Entities;
+﻿
+namespace DataAccess.Entities;
 
-public class Roles
+public class Roles : EntityBase
 {
-    public int Id { get; set; }
     public bool Admin { get; set; }
+    public int UserId { get; set; }
+    
     public int? BorrowerId { get; set; }
+    
     public int? LenderId { get; set; }
     
     public Lender Lender { get; set; }

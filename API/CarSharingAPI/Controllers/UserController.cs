@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
+using BusinessLogic.Models.RefreshToken;
 using BusinessLogic.Models.User;
 using BusinessLogic.Services;
+using CarSharingAPI.Identity;
 using CarSharingAPI.Requests;
+using CarSharingAPI.Requests.User;
 using CarSharingAPI.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarSharingAPI.Controllers;
@@ -13,16 +17,18 @@ public class UserController : ControllerBase
 {
     private readonly IUserService _userService;
     private readonly IMapper _mapper;
+    private readonly ITokenService _tokenService;
 
-    public UserController(IUserService userService, IMapper mapper)
+    public UserController(IUserService userService, IMapper mapper, ITokenService tokenService)
     {
         _userService = userService;
         _mapper = mapper;
+        _tokenService = tokenService;
     }
 
     [HttpGet]
-    [Route("get-id")]
-    public async Task<IActionResult> Get(int id)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Get([FromRoute] int id)
     {
         if (!await _userService.ExistsAsync(id))
         {
@@ -39,18 +45,19 @@ public class UserController : ControllerBase
     public async Task<IActionResult> Login(LogInRequest entity)
     {
         var user = await _userService.GetByEmailAsync(entity.Email);
-        if (user == null)
-        {
-            return NotFound("No users with that Email address");
-        }
-
+        
         if (user.Password != entity.Password)
         {
             return BadRequest("Wrong Password");
-            
         }
 
-        var response = _mapper.Map<UserResponse>(user);
+        var response = _mapper.Map<LogInResponse>(user);
+        var newRefreshToken = await _tokenService.GenerateRefreshToken(user);
+        var accessToken = await _tokenService.GenerateAccessToken(newRefreshToken);
+        response.RefreshToken = newRefreshToken.Token;
+        response.accessToken = accessToken;
+        Response.Cookies.Append("Authorization", accessToken);
+        Response.Cookies.Append("AuthorizationRefresh", newRefreshToken.Token);
         return Ok(response);
     }
 
@@ -64,26 +71,30 @@ public class UserController : ControllerBase
         return Ok(response);
     }
     
+    //[ValidateToken] //to make it work - comment that attribute
+    [Authorize]
     [HttpPut]
-    [Route("Update")]
-    public async Task<IActionResult> Edit(UserRequest entity)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Edit([FromRoute] int id, [FromBody] UserRequest entity)
     {
         
-        if (!await _userService.ExistsAsync(entity.Id))
+        if (!await _userService.ExistsAsync(id))
         {
             return NotFound();
         }
 
         var userDto = _mapper.Map<UserDto>(entity);
+        userDto.Id = id;
         var newUserDto = await _userService.UpdateAsync(userDto);
         var response = _mapper.Map<UserResponse>(newUserDto);
         return Ok(response);
     }
     
-    
+    [ValidateToken] //to make it work - comment that attribute
+    [Authorize]
     [HttpDelete]
-    [Route("Delete")]
-    public async Task<IActionResult> Delete(int id)
+    [Route("{id:int}")]
+    public async Task<IActionResult> Delete([FromRoute]int id)
     {
         if (!await _userService.ExistsAsync(id))
         {
@@ -94,5 +105,27 @@ public class UserController : ControllerBase
         var response = _mapper.Map<UserDto>(responseDto);
         return Ok(response);
     }
+    
+    
+    [HttpPost]
+    [Route("UpdateToken")]
+    public async Task<IActionResult> RefreshToken()
+    {
+        var refreshToken = Request.Cookies["AuthorizationRefresh"];
+        if (refreshToken == null)
+        {
+            return BadRequest("Invalid token");
+        }
 
+        var userId = await _tokenService.GetUserIdFromToken(refreshToken);
+        var token = new RefreshTokenDto() 
+            {
+                UserId = userId,
+                Token = refreshToken
+            };
+        var newAccessToken = await _tokenService.GenerateAccessToken(token);
+        Response.Cookies.Delete("Authorization");
+        Response.Cookies.Append("Authorization", newAccessToken);
+        return Ok(newAccessToken);
+    }
 }

@@ -1075,13 +1075,24 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.10",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.10"
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.10",
+          "Shared": "1.0.0"
         },
         "compile": {
           "bin/placeholder/DataAccess.dll": {}
         },
         "runtime": {
           "bin/placeholder/DataAccess.dll": {}
+        }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
         }
       }
     }
@@ -3285,6 +3296,11 @@
       "type": "project",
       "path": "../DataAccess/DataAccess.csproj",
       "msbuildProject": "../DataAccess/DataAccess.csproj"
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3292,7 +3308,8 @@
       "AutoMapper >= 12.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
       "DataAccess >= 1.0.0",
-      "FluentValidation >= 11.7.1"
+      "FluentValidation >= 11.7.1",
+      "Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3330,6 +3347,12 @@
           "projectReferences": {
             "C:\\rider\\c#projects\\CarSharingApp\\API\\DataAccess\\DataAccess.csproj": {
               "projectPath": "C:\\rider\\c#projects\\CarSharingApp\\API\\DataAccess\\DataAccess.csproj"
+<<<<<<< HEAD
+=======
+            },
+            "C:\\rider\\c#projects\\CarSharingApp\\API\\Shared\\Shared.csproj": {
+              "projectPath": "C:\\rider\\c#projects\\CarSharingApp\\API\\Shared\\Shared.csproj"
+>>>>>>> develop
             }
           }
         }

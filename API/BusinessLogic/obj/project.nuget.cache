@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "4D+WDMv6d/LLNGTTfNp7L1ka1jVU8c1Zu89dCRQQ7E26vhJpAk6LGpWbfAA8jHZrsEmsjrZ1gDtHB6AdK2LE3A==",
+=======
+  "dgSpecHash": "fu8Q6LhA3uapM3T464cqDeYfWcygpnELGlS8fM/ptyi0xmr4cp59H1CwjYpOZjnLfZGt4Sx17qJIoo+reOuzfQ==",
+>>>>>>> develop
   "success": true,
   "projectFilePath": "C:\\rider\\c#projects\\CarSharingApp\\API\\BusinessLogic\\BusinessLogic.csproj",
   "expectedPackageFiles": [

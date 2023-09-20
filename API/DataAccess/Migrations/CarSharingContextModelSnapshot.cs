@@ -22,34 +22,6 @@ namespace DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("DataAccess.Entities.Activity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CarId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<float>("Latitude")
-                        .HasColumnType("real");
-
-                    b.Property<float>("Longitude")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarId")
-                        .IsUnique();
-
-                    b.ToTable("Activity");
-                });
-
             modelBuilder.Entity("DataAccess.Entities.Borrower", b =>
                 {
                     b.Property<int>("Id")
@@ -90,7 +62,13 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Borrowers");
                 });
@@ -111,8 +89,17 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<float>("Latitude")
+                        .HasColumnType("real");
+
                     b.Property<int>("LenderId")
                         .HasColumnType("int");
+
+                    b.Property<float>("Longitude")
+                        .HasColumnType("real");
 
                     b.Property<string>("Mark")
                         .IsRequired()
@@ -231,9 +218,41 @@ namespace DataAccess.Migrations
                     b.Property<bool>("IsVerified")
                         .HasColumnType("bit");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
                     b.ToTable("Lenders");
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserRoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.Roles", b =>
@@ -248,19 +267,25 @@ namespace DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int?>("BorrowerId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("LenderId")
-                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BorrowerId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[BorrowerId] IS NOT NULL");
 
                     b.HasIndex("LenderId")
+                        .IsUnique()
+                        .HasFilter("[LenderId] IS NOT NULL");
+
+                    b.HasIndex("UserId")
                         .IsUnique();
 
                     b.ToTable("Roles");
@@ -275,7 +300,6 @@ namespace DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -302,37 +326,31 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("RoleId")
-                        .IsUnique();
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("DataAccess.Entities.Activity", b =>
+            modelBuilder.Entity("DataAccess.Entities.Borrower", b =>
                 {
-                    b.HasOne("DataAccess.Entities.Car", "Car")
-                        .WithOne("Activity")
-                        .HasForeignKey("DataAccess.Entities.Activity", "CarId")
+                    b.HasOne("DataAccess.Entities.User", "User")
+                        .WithOne("Borrower")
+                        .HasForeignKey("DataAccess.Entities.Borrower", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Car");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.Car", b =>
                 {
-                    b.HasOne("DataAccess.Entities.Lender", "Owner")
+                    b.HasOne("DataAccess.Entities.Lender", "Lender")
                         .WithMany("Cars")
                         .HasForeignKey("LenderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Owner");
+                    b.Navigation("Lender");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.Deal", b =>
@@ -365,18 +383,29 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("DataAccess.Entities.FeedBack", b =>
                 {
                     b.HasOne("DataAccess.Entities.Car", "Car")
-                        .WithMany("FeedBack")
+                        .WithMany("FeedBacks")
                         .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("DataAccess.Entities.User", "User")
                         .WithMany("FeedBacks")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Car");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.Lender", b =>
+                {
+                    b.HasOne("DataAccess.Entities.User", "User")
+                        .WithOne("Lender")
+                        .HasForeignKey("DataAccess.Entities.Lender", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
@@ -386,29 +415,24 @@ namespace DataAccess.Migrations
                     b.HasOne("DataAccess.Entities.Borrower", "Borrower")
                         .WithOne("Roles")
                         .HasForeignKey("DataAccess.Entities.Roles", "BorrowerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DataAccess.Entities.Lender", "Lender")
                         .WithOne("Roles")
                         .HasForeignKey("DataAccess.Entities.Roles", "LenderId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("DataAccess.Entities.User", "User")
+                        .WithOne("Role")
+                        .HasForeignKey("DataAccess.Entities.Roles", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Borrower");
 
                     b.Navigation("Lender");
-                });
 
-            modelBuilder.Entity("DataAccess.Entities.User", b =>
-                {
-                    b.HasOne("DataAccess.Entities.Roles", "Role")
-                        .WithOne("User")
-                        .HasForeignKey("DataAccess.Entities.User", "RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.Borrower", b =>
@@ -421,12 +445,9 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("DataAccess.Entities.Car", b =>
                 {
-                    b.Navigation("Activity")
-                        .IsRequired();
-
                     b.Navigation("Deals");
 
-                    b.Navigation("FeedBack");
+                    b.Navigation("FeedBacks");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.Lender", b =>
@@ -439,15 +460,18 @@ namespace DataAccess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DataAccess.Entities.Roles", b =>
-                {
-                    b.Navigation("User")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("DataAccess.Entities.User", b =>
                 {
+                    b.Navigation("Borrower")
+                        .IsRequired();
+
                     b.Navigation("FeedBacks");
+
+                    b.Navigation("Lender")
+                        .IsRequired();
+
+                    b.Navigation("Role")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -2,6 +2,7 @@ using AutoMapper;
 using BusinessLogic.Models.FeedBack;
 using DataAccess.Entities;
 using DataAccess.Repositories.Implementation;
+using Shared.Exceptions;
 
 namespace BusinessLogic.Services.Implemetation;
 
@@ -21,7 +22,7 @@ public class FeedBackService : IFeedBackService
         var feedBack = await _feedBackRepository.GetByIdAsync(id);
         if (feedBack == null)
         {
-            throw new Exception("FeedBack not found");
+            throw new NotFoundException("FeedBack not found");
         }
         var feedBackDto = _mapper.Map<FeedBackDto>( feedBack);
         return feedBackDto;
@@ -46,7 +47,7 @@ public class FeedBackService : IFeedBackService
         var existingFeedBack = await _feedBackRepository.GetByIdAsync(entity.Id);
         if (existingFeedBack == null)
         {
-            throw new Exception("FeedBack not found");
+            throw new NotFoundException("FeedBack not found");
         }
         existingFeedBack.Comment = entity.Comment;
         existingFeedBack.Rating = entity.Rating;
@@ -61,7 +62,7 @@ public class FeedBackService : IFeedBackService
         var feedBack = await _feedBackRepository.GetByIdAsync(id);
         if (feedBack == null)
         {
-            throw new ArgumentException("FeedBack not found");
+            throw new NotFoundException("FeedBack not found");
         }
         
         var feedBackDto = _mapper.Map<FeedBackDto>( await _feedBackRepository.DeleteAsync(id));

@@ -16,7 +16,7 @@ public class UserValidator : AbstractValidator<UserDto>
         RuleFor(user => user.PhoneNumber).NotEmpty()
             .MinimumLength(10).WithMessage("PhoneNumber must not be less than 10 characters.")
             .MaximumLength(20).WithMessage("PhoneNumber must not exceed 50 characters.")
-            .Matches(new Regex(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$")).WithMessage("PhoneNumber not valid");
+            .Matches(new Regex(@"^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$")).WithMessage("PhoneNumber not valid");
         // different regex ^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$
     }
 }

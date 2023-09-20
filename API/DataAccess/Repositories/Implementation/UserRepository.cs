@@ -4,51 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories.Implementation;
 
-public class UserRepository : IUserRepository
+public class UserRepository : GenericRepository<User> , IUserRepository
 {
     private CarSharingContext db;
 
-    public UserRepository(CarSharingContext db)
+    public UserRepository(CarSharingContext db) : base(db)
     {
         this.db = db;
-    }
-
-    public async Task<User?> GetByIdAsync(int id)
-    {
-        return await db.Users.FindAsync(id);
-    }
-
-    public async Task<IEnumerable<User>> GetAllAsync()
-    {
-        return db.Users.AsEnumerable();
-    }
-
-    public async Task<User> AddAsync(User entity)
-    {
-        await db.Users.AddAsync(entity);
-        await db.SaveChangesAsync();
-        return entity;
-    }
-
-    public async Task<User> UpdateAsync(User entity)
-    {
-        db.Entry(entity).State = EntityState.Modified; // проверить!
-        await db.SaveChangesAsync();
-        return entity;
-    }
-
-    public async Task<User?> DeleteAsync(int id)
-    {
-        var entity = await GetByIdAsync(id);
-        if (entity == null) return null;
-        db.Users.Remove(entity);
-        await db.SaveChangesAsync();
-        return entity;
-    }
-
-    public async Task<bool> ExistsAsync(int id)
-    {
-        return await db.Users.AnyAsync(p => p.Id == id);
     }
 
     public async Task<User?> GetByEmailAsync(string email)

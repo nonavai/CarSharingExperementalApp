@@ -4,6 +4,7 @@ using BusinessLogic.Models.User;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 using FluentValidation;
+using Shared.Exceptions;
 
 
 namespace BusinessLogic.Services.Implemetation;
@@ -28,7 +29,7 @@ public class UserService : IUserService
         var user = await _userRepository.GetByIdAsync(id);
         if (user == null)
         {
-            throw new Exception("Car not found");
+            throw new NotFoundException("Car not found");
         }
         var userDto = _mapper.Map<UserDto>(user);
         return userDto;
@@ -42,19 +43,23 @@ public class UserService : IUserService
 
     public async Task<UserDto> AddAsync(UserDto entity)
     {
+        if (await IsEmailExist(entity.Email))
+        {
+            throw new BadAuthorizeException("User already exist");
+        }
         var validationResult = _validator.Validate(entity);
 
         if (!validationResult.IsValid)
         {
             throw new ValidationException(validationResult.Errors.ToString());
         }
-
+        
         // CREATING USER ROLES
-        var roles = new RolesDto() { Admin = false, BorrowerId= null, LenderId = null};
-        /*var roleid =*/await _rolesService.AddAsync(roles);
-        User user = _mapper.Map<User>(entity);                                     //if doesn't work uncomment!! 
-        //user.RoleId = roleid.Id;
-        var userDto = _mapper.Map<UserDto>(  await _userRepository.AddAsync(user));
+        User user = _mapper.Map<User>(entity);
+        var compitedUser = await _userRepository.AddAsync(user);
+        var roles = new RolesDto() {UserId = compitedUser.Id ,Admin = false, BorrowerId= null, LenderId = null};
+        var roleDto = await _rolesService.AddAsync(roles);
+        var userDto = _mapper.Map<UserDto>(  compitedUser);
         return userDto;
     }
 
@@ -63,7 +68,7 @@ public class UserService : IUserService
         var existingUser = await _userRepository.GetByIdAsync(entity.Id);
         if (existingUser == null)
         {
-            throw new Exception("User not found");
+            throw new NotFoundException("User not found");
         }
         //check on existing
         var validationResult = _validator.Validate(entity);
@@ -91,7 +96,7 @@ public class UserService : IUserService
         var user = await _userRepository.GetByIdAsync(id);
         if (user == null)
         {
-            throw new ArgumentException("User not found");
+            throw new NotFoundException("User not found");
         }
         
         var userDto = _mapper.Map<UserDto>( await _userRepository.DeleteAsync(id));
@@ -103,14 +108,17 @@ public class UserService : IUserService
         return await _userRepository.ExistsAsync(id);
     }
 
-    public async Task<UserDto?> GetByEmailAsync(string email)
+    public async Task<UserDto> GetByEmailAsync(string email)
     {
-        var userDto = _mapper.Map<UserDto>( await _userRepository.GetByEmailAsync(email));
+        var user = await _userRepository.GetByEmailAsync(email);
+        var userDto = _mapper.Map<UserDto>(user);
         return userDto;
     }
 
-    
+    public async Task<bool> IsEmailExist(string email)
+    {
+        var user = await _userRepository.GetByEmailAsync(email);
+        return user != null;
+    }
 
-
-    // valoidate method 
 }

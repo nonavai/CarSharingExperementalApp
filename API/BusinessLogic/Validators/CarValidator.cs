@@ -26,10 +26,18 @@ public class CarValidator : AbstractValidator<CarDto>
         RuleFor(car => car.VehicleBody)
             .NotEmpty()
             .MinimumLength(9).WithMessage("VehicleBody num must be longer than 9.")
-            .MaximumLength(17).WithMessage("VehicleBody cannot exceed 12 characters.");
+            .MaximumLength(17).WithMessage("VehicleBody cannot exceed 17 characters.");
 
         RuleFor(car => car.Price)
             .GreaterThan(0).WithMessage("Price must be greater than 0.");
+        
+        RuleFor(location => location.Latitude)
+            .InclusiveBetween(-90, 90)
+            .WithMessage("Latitude must be between -90 and 90 degrees.");
+
+        RuleFor(location => location.Longitude)
+            .InclusiveBetween(-180, 180)
+            .WithMessage("Longitude must be between -180 and 180 degrees.");
     }
 
 }

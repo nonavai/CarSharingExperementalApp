@@ -1,56 +1,17 @@
 ﻿using DataAccess.DbContext;
 using DataAccess.Entities;
-using DataAccess.Enums;
+using Shared.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories.Implementation;
 
-public class CarRepository : ICarRepository
+public class CarRepository : GenericRepository<Car> , ICarRepository
 {
     private CarSharingContext db;
 
-    public CarRepository(CarSharingContext db)
+    public CarRepository(CarSharingContext db) : base(db)
     {
         this.db = db;
-    }
-
-    public async Task<Car?> GetByIdAsync(int id)
-    {
-        return await db.Cars.FindAsync(id);
-    }
-
-    public async Task<IEnumerable<Car>> GetAllAsync()
-    {
-        return db.Cars.AsEnumerable();
-    }
-
-    public async Task<Car> AddAsync(Car entity)
-    {
-        await db.Cars.AddAsync(entity);
-        await db.SaveChangesAsync();
-        return entity;
-    }
-
-    public async Task<Car> UpdateAsync(Car entity)
-    {
-        db.Entry(entity).State = EntityState.Modified; // проверить!
-        await db.SaveChangesAsync();
-        return entity;
-    }
-
-    public async Task<Car?> DeleteAsync(int id)
-    {
-        var entity = await GetByIdAsync(id);
-        if (entity == null) return null;
-        db.Cars.Remove(entity);
-        await db.SaveChangesAsync();
-        return entity;
-
-    }
-
-    public async Task<bool> ExistsAsync(int id)
-    {
-        return await db.Cars.AnyAsync(p => p.Id == id);
     }
 
     public async Task<IQueryable<Car>> GetMany(int[] ids)
@@ -60,11 +21,21 @@ public class CarRepository : ICarRepository
     }
 
     public async Task<IQueryable<Car>> SearchCars(int? minYear, int? maxYear, int? minPrice, int? maxPrice, VehicleType vehicleType, FuelType fuelType,
-        string mark)
+        string mark, float? radiusKm, float? latitude, float? longitude, bool? isActive)
     {
-        IQueryable<Car> query = db.Cars;
+        IQueryable<Car> query;
 
-        // using filters
+        if (radiusKm.HasValue && latitude.HasValue && longitude.HasValue)
+        {
+            query = await GetByRadiusAsync(radiusKm.Value, latitude.Value, longitude.Value);
+        }
+        else
+        {
+            query = db.Cars;
+        }
+
+        if (isActive.HasValue)
+            query = query.Where(c => c.IsActive == isActive.Value);
 
         if (minYear.HasValue)
             query = query.Where(c => c.Year >= minYear);
@@ -90,4 +61,16 @@ public class CarRepository : ICarRepository
         
         return  await Task.FromResult(query);
     }
+    private async Task<IQueryable<Car>> GetByRadiusAsync(float radiusKm, float latitude, float longitude)
+    {
+        var earthRadiusKm = 6371; 
+        var maxDistance = radiusKm / earthRadiusKm;
+        return db.Cars.Where(loc =>
+            Math.Acos(
+                Math.Sin(latitude * (Math.PI / 180)) * Math.Sin(loc.Latitude * (Math.PI / 180)) +
+                Math.Cos(latitude * (Math.PI / 180)) * Math.Cos(loc.Latitude * (Math.PI / 180)) *
+                Math.Cos((longitude - loc.Longitude) * (Math.PI / 180))
+            ) <= maxDistance).AsQueryable();
+    }
+    
 }

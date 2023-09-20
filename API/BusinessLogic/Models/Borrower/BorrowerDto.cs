@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using DataAccess.Enums;
+using Shared.Enums;
 
 namespace BusinessLogic.Models.Borrower;
 

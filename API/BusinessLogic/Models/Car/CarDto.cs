@@ -1,4 +1,4 @@
-﻿using DataAccess.Enums;
+﻿using Shared.Enums;
 
 namespace BusinessLogic.Models.Car;
 
@@ -6,6 +6,9 @@ public class CarDto
 {
     public int Id { get; set; }
     public int LenderId { get; set; }
+    public bool IsActive { get; set; }
+    public float Latitude { get; set; }
+    public float Longitude { get; set; }
     public int Year { get; set; }
     public string RegistrationNumber { get; set; }
     public string Mark { get; set; }
