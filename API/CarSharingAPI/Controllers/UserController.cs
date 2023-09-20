@@ -118,7 +118,11 @@ public class UserController : ControllerBase
         }
 
         var userId = await _tokenService.GetUserIdFromToken(refreshToken);
-        var token = new RefreshTokenDto() { UserId = userId, Token = refreshToken };
+        var token = new RefreshTokenDto() 
+            {
+                UserId = userId,
+                Token = refreshToken
+            };
         var newAccessToken = await _tokenService.GenerateAccessToken(token);
         Response.Cookies.Delete("Authorization");
         Response.Cookies.Append("Authorization", newAccessToken);

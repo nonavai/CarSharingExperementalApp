@@ -9,21 +9,17 @@ public class ValidateTokenAttribute : ActionFilterAttribute
 {
     public override async void OnActionExecuting(ActionExecutingContext context)
     {
-        // Get the token value from the request
-        
-        //var reader = await new StreamReader(context.HttpContext.Request.Body).ReadToEndAsync();
-        
         var token = context.HttpContext.Request.Cookies["Authorization"];
-        // Get the user id from the token
         var tokenService = context.HttpContext.RequestServices.GetService<ITokenService>();
         var userId = await tokenService.GetUserIdFromToken(token);
         // Get the user id from the request
         /*using var reader = new StreamReader(context.HttpContext.Request.Body);*/
 
         
-        var requestQueryString = context.HttpContext.Request.QueryString;
-        var stringRequestUserId = Regex.Match(requestQueryString.Value, @"id=(\d+)").Groups[1].Value;
-        var requestUserId = Convert.ToInt32(stringRequestUserId);
+        var requestQueryString = context.HttpContext.Request.Path;
+        var stringRequestUserId = Regex.Match(requestQueryString.Value,  @"/(\w+)/(\d+)");
+        var num = stringRequestUserId.Groups[2].Value;
+        var requestUserId = Convert.ToInt32(num);
         
 
         // Check if the user ids match
